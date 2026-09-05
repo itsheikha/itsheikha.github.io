@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تفكُّرات – شيخة sheikha</title>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #faf6f1;
@@ -14,9 +14,6 @@
     --accent: #616283;
     --accent-light: #d4d6e2;
     --accent-hover: #4b4d66;
-    --accent-warm: #a37774;
-    --accent-warm-hover: #8f6966;
-    --accent-bright: #c5e99b;
     --border: #dacfcd;
     --card-shadow: 0 1px 3px rgba(0,0,0,.06), 0 6px 12px rgba(0,0,0,.03);
     --card-shadow-hover: 0 2px 6px rgba(0,0,0,.08), 0 10px 20px rgba(0,0,0,.06);
@@ -24,7 +21,7 @@
     --font-heading: 'Amiri', serif;
     --font-body: 'Readex Pro', 'Tajawal', sans-serif;
     --font-ui: 'Tajawal', 'Readex Pro', sans-serif;
-    --font-en: 'Cormorant Garamond', Georgia, serif;
+    --font-en: 'Plus Jakarta Sans', sans-serif;
     --max-w: 860px;
     --transition: .25s cubic-bezier(.4,0,.2,1);
   }
@@ -45,40 +42,19 @@
 
   /* ── Header ── */
   .site-header {
-    padding: 3.5rem 1.5rem 1.5rem;
+    padding: 4.5rem 1.5rem 2rem;
     text-align: center;
   }
 
-  .avatar {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    margin: 0 auto 1.25rem;
-    overflow: hidden;
-    border: 2.5px solid var(--accent-bright);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(145deg, #616283 0%, #847a8e 40%, #c5e99b 100%);
-  }
-
-  .avatar-letter {
-    font-family: var(--font-heading);
-    font-size: 2.6rem;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-  }
-
   .site-name {
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--text);
     margin-bottom: .3rem;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
-    gap: .35rem;
+    gap: .5rem;
     direction: rtl;
   }
 
@@ -89,28 +65,27 @@
   .name-en {
     font-family: var(--font-en);
     font-weight: 400;
-    font-style: italic;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     color: var(--accent);
-    letter-spacing: .02em;
+    letter-spacing: .03em;
     direction: ltr;
   }
 
   .site-tagline {
     font-family: var(--font-ui);
-    font-size: .88rem;
+    font-size: .95rem;
     color: var(--text-secondary);
     font-weight: 400;
-    margin-top: .15rem;
+    margin-top: .3rem;
   }
 
   .site-tagline .tagline-en {
     font-family: var(--font-en);
-    font-style: italic;
-    font-size: .92rem;
-    letter-spacing: .03em;
+    font-size: .9rem;
+    letter-spacing: .04em;
     direction: ltr;
     unicode-bidi: embed;
+    color: var(--text-secondary);
   }
 
   /* ── Subtle divider below header ── */
@@ -130,13 +105,13 @@
 
   /* ── Hero ── */
   .blog-hero {
-    padding: 2rem 0 1.5rem;
+    padding: 2.5rem 0 1.5rem;
     text-align: center;
   }
 
   .blog-hero h1 {
     font-family: var(--font-heading);
-    font-size: 2.1rem;
+    font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: .6rem;
     color: var(--text);
@@ -144,7 +119,7 @@
 
   .blog-hero .lead {
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--accent);
     line-height: 2;
     max-width: 600px;
@@ -152,42 +127,35 @@
     font-weight: 500;
   }
 
-  /* ── Divider ── */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 0;
-  }
-
   /* ── Newsletter CTA ── */
   .newsletter-cta {
     text-align: center;
-    padding: 2rem 0;
+    padding: 2rem 0 3rem;
   }
 
   .newsletter-cta .cta-text {
     font-family: var(--font-heading);
-    font-size: 1.02rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text);
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
   }
 
   .newsletter-form {
     display: flex;
     gap: .6rem;
-    max-width: 400px;
+    max-width: 420px;
     margin: 0 auto;
     flex-direction: row-reverse;
   }
 
   .newsletter-form input {
     flex: 1;
-    padding: .7rem 1rem;
+    padding: .75rem 1rem;
     border: 1.5px solid var(--border);
     border-radius: 8px;
     font-family: var(--font-ui);
-    font-size: .88rem;
+    font-size: .9rem;
     background: var(--surface);
     color: var(--text);
     outline: none;
@@ -204,13 +172,13 @@
   }
 
   .newsletter-form button {
-    padding: .7rem 1.4rem;
+    padding: .75rem 1.5rem;
     background: var(--accent);
     color: #fff;
     border: none;
     border-radius: 8px;
     font-family: var(--font-ui);
-    font-size: .85rem;
+    font-size: .9rem;
     font-weight: 500;
     cursor: pointer;
     transition: background var(--transition);
@@ -221,78 +189,10 @@
     background: var(--accent-hover);
   }
 
-  /* ── Blog Grid ── */
-  .blog-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem 0 3rem;
-  }
-
-  .post-card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--card-shadow);
-    transition: box-shadow var(--transition), transform var(--transition);
-    cursor: pointer;
-  }
-
-  .post-card:hover {
-    box-shadow: var(--card-shadow-hover);
-    transform: translateY(-2px);
-  }
-
-  .post-card .card-image {
-    display: none;
-  }
-
-  .post-card .card-body {
-    padding: 1.35rem 1.5rem 1.5rem;
-  }
-
-  .post-card .card-category {
-    display: none;
-  }
-
-  .post-card .card-title {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    font-weight: 700;
-    line-height: 1.5;
-    margin-bottom: .4rem;
-    color: var(--text);
-    transition: color var(--transition);
-  }
-
-  .post-card:hover .card-title { color: var(--accent); }
-
-  .post-card .card-excerpt {
-    font-size: .9rem;
-    color: var(--text-secondary);
-    line-height: 1.85;
-  }
-
-  .post-card .card-date {
-    font-family: var(--font-ui);
-    font-size: .75rem;
-    color: #b5b0be;
-    margin-top: .65rem;
-    display: block;
-  }
-
-  /* ── Gradient Cover Placeholders ── */
-  .cover-1 { background: linear-gradient(135deg, #616283 0%, #847a8e 60%, #c5e99b 100%); }
-  .cover-2 { background: linear-gradient(135deg, #463f51 0%, #616283 50%, #a37774 100%); }
-  .cover-3 { background: linear-gradient(135deg, #4b4d66 0%, #616283 40%, #a37774 90%, #c5e99b 100%); }
-  .cover-4 { background: linear-gradient(135deg, #847a8e 0%, #a37774 50%, #c5e99b 100%); }
-  .cover-5 { background: linear-gradient(135deg, #463f51 0%, #616283 40%, #a37774 100%); }
-  .cover-6 { background: linear-gradient(135deg, #a37774 0%, #c5e99b 50%, #e3f0d0 100%); }
-
   /* ── Footer ── */
   .site-footer {
     text-align: center;
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
     border-top: 1px solid var(--border);
     max-width: calc(var(--max-w) + 3rem);
     margin: 0 auto;
@@ -302,43 +202,23 @@
     font-family: var(--font-heading);
     font-size: 1.1rem;
     font-weight: 700;
-    margin-bottom: .75rem;
+  }
+
+  .footer-en {
+    font-family: var(--font-en);
+    font-weight: 400;
+    font-size: .9rem;
+    color: var(--accent);
+    margin-right: .3rem;
   }
 
   /* ── Responsive ── */
-  @media (min-width: 640px) {
-    .blog-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .blog-hero h1 { font-size: 2.35rem; }
-  }
-
   @media (max-width: 480px) {
     .newsletter-form { flex-direction: column-reverse; }
     .newsletter-form input,
     .newsletter-form button { width: 100%; }
-    .post-card .card-body { padding: 1rem 1.15rem 1.25rem; }
-    .site-name { font-size: 1.45rem; }
+    .site-name { font-size: 1.6rem; }
     .name-en { font-size: 1.1rem; }
-  }
-
-  /* ── Scroll reveal ── */
-  @media (prefers-reduced-motion: no-preference) {
-    .post-card {
-      opacity: 0;
-      transform: translateY(18px);
-      animation: cardIn .5s ease forwards;
-    }
-    .post-card:nth-child(1) { animation-delay: .05s; }
-    .post-card:nth-child(2) { animation-delay: .12s; }
-    .post-card:nth-child(3) { animation-delay: .19s; }
-    .post-card:nth-child(4) { animation-delay: .26s; }
-    .post-card:nth-child(5) { animation-delay: .33s; }
-    .post-card:nth-child(6) { animation-delay: .40s; }
-  }
-
-  @keyframes cardIn {
-    to { opacity: 1; transform: translateY(0); }
   }
 </style>
 </head>
@@ -346,11 +226,6 @@
 
 <!-- ═══ Header ═══ -->
 <header class="site-header">
-  <a href="#">
-    <div class="avatar">
-      <span class="avatar-letter">ش</span>
-    </div>
-  </a>
   <div class="site-name">
     <span class="name-ar">شيخة</span><span class="name-en">sheikha</span>
   </div>
@@ -381,7 +256,7 @@
 
 <!-- ═══ Footer ═══ -->
 <footer class="site-footer">
-  <div class="footer-name">شيخة <span style="font-family:var(--font-en);font-weight:400;font-style:italic;font-size:.95rem;color:var(--accent);">sheikha</span></div>
+  <div class="footer-name">شيخة <span class="footer-en">sheikha</span></div>
 </footer>
 
 </body>
