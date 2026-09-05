@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تفكُّرات – شيخة sheikha</title>
+<title>تأملات – شيخة sheikha</title>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -54,7 +54,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: .5rem;
+    gap: .25rem; /* تقريب الاسم العربي والانجليزي */
     direction: rtl;
   }
 
@@ -65,9 +65,9 @@
   .name-en {
     font-family: var(--font-en);
     font-weight: 400;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: var(--accent);
-    letter-spacing: .03em;
+    letter-spacing: .02em;
     direction: ltr;
   }
 
@@ -202,6 +202,10 @@
     font-family: var(--font-heading);
     font-size: 1.1rem;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
   }
 
   .footer-en {
@@ -209,7 +213,6 @@
     font-weight: 400;
     font-size: .9rem;
     color: var(--accent);
-    margin-right: .3rem;
   }
 
   /* ── Responsive ── */
@@ -229,7 +232,7 @@
   <div class="site-name">
     <span class="name-ar">شيخة</span><span class="name-en">sheikha</span>
   </div>
-  <div class="site-tagline"><span class="tagline-en">Reflecting…</span> تفكُّرات.</div>
+  <div class="site-tagline"><span class="tagline-en">Reflecting…</span> تأملات.</div>
 </header>
 
 <hr class="header-rule">
@@ -245,7 +248,7 @@
 
   <!-- Newsletter CTA -->
   <section class="newsletter-cta">
-    <p class="cta-text">اشترك في نشرتي البريدية، أشارك فيها ما لا أنشره هنا</p>
+    <p class="cta-text">اشترك في نشرتي البريدية</p>
     <div class="newsletter-form">
       <input type="email" placeholder="بريدك الإلكتروني">
       <button>اشتراك</button>
@@ -256,7 +259,9 @@
 
 <!-- ═══ Footer ═══ -->
 <footer class="site-footer">
-  <div class="footer-name">شيخة <span class="footer-en">sheikha</span></div>
+  <div class="footer-name">
+    <span class="name-ar">شيخة</span><span class="footer-en">sheikha</span>
+  </div>
 </footer>
 
 </body>
