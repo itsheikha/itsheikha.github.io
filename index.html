@@ -10,7 +10,7 @@
     --bg: #faf6f1;
     --surface: #ffffff;
     --text: #463f51;
-    --text-secondary: #847a8e;
+    --text-secondary: #6e6578;
     --accent: #616283;
     --accent-light: #d4d6e2;
     --accent-hover: #4b4d66;
@@ -30,7 +30,7 @@
 
   body {
     font-family: var(--font-body);
-    font-size: 18px;
+    font-size: 19px;
     background: var(--bg);
     color: var(--text);
     line-height: 1.85;
@@ -42,19 +42,19 @@
 
   /* ── Header ── */
   .site-header {
-    padding: 4.5rem 1.5rem 2rem;
+    padding: 4.5rem 1.5rem 2.2rem;
     text-align: center;
   }
 
   .site-name {
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: .3rem;
+    margin-bottom: .4rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: .3rem;
+    gap: .4rem;
     direction: rtl;
   }
 
@@ -64,9 +64,9 @@
 
   .name-en {
     font-family: var(--font-en);
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
-    font-size: 1.2rem;
+    font-size: 1.5rem; /* تكبير اسم sheikha */
     color: var(--accent);
     letter-spacing: .01em;
     direction: ltr;
@@ -74,10 +74,10 @@
 
   .site-tagline {
     font-family: var(--font-ui);
-    font-size: .95rem;
+    font-size: 1.1rem; /* تكبير مدوّنة شيخة */
     color: var(--text-secondary);
-    font-weight: 400;
-    margin-top: .3rem;
+    font-weight: 500;
+    margin-top: .4rem;
   }
 
   /* ── Subtle divider below header ── */
@@ -97,21 +97,21 @@
 
   /* ── Hero ── */
   .blog-hero {
-    padding: 2.5rem 0 1.5rem;
+    padding: 3rem 0 2rem;
     text-align: center;
   }
 
   .blog-hero h1 {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: .6rem;
+    margin-bottom: .8rem;
     color: var(--text);
   }
 
   .blog-hero .lead {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     color: var(--accent);
     line-height: 2;
     max-width: 600px;
@@ -122,12 +122,12 @@
   /* ── Newsletter CTA ── */
   .newsletter-cta {
     text-align: center;
-    padding: 2rem 0 3rem;
+    padding: 2rem 0 3.5rem;
   }
 
   .newsletter-cta .cta-text {
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: var(--text);
     margin-bottom: 1.2rem;
@@ -136,18 +136,18 @@
   .newsletter-form {
     display: flex;
     gap: .6rem;
-    max-width: 420px;
+    max-width: 440px;
     margin: 0 auto;
     flex-direction: row-reverse;
   }
 
   .newsletter-form input {
     flex: 1;
-    padding: .75rem 1rem;
+    padding: .8rem 1.1rem;
     border: 1.5px solid var(--border);
     border-radius: 8px;
     font-family: var(--font-ui);
-    font-size: .9rem;
+    font-size: 1rem;
     background: var(--surface);
     color: var(--text);
     outline: none;
@@ -160,17 +160,17 @@
   }
 
   .newsletter-form input::placeholder {
-    color: #bdb5c5;
+    color: #a399b0;
   }
 
   .newsletter-form button {
-    padding: .75rem 1.5rem;
+    padding: .8rem 1.6rem;
     background: var(--accent);
     color: #fff;
     border: none;
     border-radius: 8px;
     font-family: var(--font-ui);
-    font-size: .9rem;
+    font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
     transition: background var(--transition);
@@ -184,7 +184,7 @@
   /* ── Footer ── */
   .site-footer {
     text-align: center;
-    padding: 2rem 1.5rem;
+    padding: 2.2rem 1.5rem;
     border-top: 1px solid var(--border);
     max-width: calc(var(--max-w) + 3rem);
     margin: 0 auto;
@@ -192,19 +192,19 @@
 
   .footer-name {
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: .3rem;
+    gap: .4rem;
   }
 
   .footer-en {
     font-family: var(--font-en);
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
-    font-size: .95rem;
+    font-size: 1.1rem;
     color: var(--accent);
   }
 
@@ -213,8 +213,8 @@
     .newsletter-form { flex-direction: column-reverse; }
     .newsletter-form input,
     .newsletter-form button { width: 100%; }
-    .site-name { font-size: 1.6rem; }
-    .name-en { font-size: 1.1rem; }
+    .site-name { font-size: 1.9rem; }
+    .name-en { font-size: 1.25rem; }
   }
 </style>
 </head>
