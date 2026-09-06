@@ -4,256 +4,428 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مدوّنة شيخة – sheikha</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Inconsolata:wght@300;400;500;600&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata:wght@300;400;500;600&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #faf6f1;
     --surface: #ffffff;
-    --text: #2d2a32;
-    --text-secondary: #5a5363;
+    --text: #463f51;
+    --text-secondary: #6e6578;
     --accent: #616283;
-    --accent-light: #d4d6e2;
+    --accent-light: #e8e9f0;
     --accent-hover: #4b4d66;
     --border: #dacfcd;
-    --card-shadow: 0 1px 3px rgba(0,0,0,.06), 0 6px 12px rgba(0,0,0,.03);
-    --card-shadow-hover: 0 2px 6px rgba(0,0,0,.08), 0 10px 20px rgba(0,0,0,.06);
+    --card-shadow: 0 2px 8px rgba(70,63,81,0.04);
     --radius: 12px;
-    --font-heading: 'Noto Naskh Arabic', 'Traditional Arabic', serif;
-    --font-body: 'Noto Naskh Arabic', 'Traditional Arabic', serif;
-    --font-ui: 'Tajawal', sans-serif;
+    --font-heading: 'Amiri', serif;
+    --font-body: 'Readex Pro', 'Tajawal', sans-serif;
+    --font-ui: 'Tajawal', 'Readex Pro', sans-serif;
     --font-en: 'Inconsolata', monospace;
-    --max-w: 860px;
-    --transition: .25s cubic-bezier(.4,0,.2,1);
+    --max-w: 1080px;
+    --transition: .25s ease;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: var(--font-body);
-    font-size: 20px;
+    font-size: 18px;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.9;
+    line-height: 1.85;
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
   }
 
   a { color: inherit; text-decoration: none; }
-  img { max-width: 100%; display: block; }
 
-  /* ── Header ── */
-  .site-header {
-    padding: 4.5rem 1.5rem 2.2rem;
-    text-align: center;
+  /* ── Layout ── */
+  .layout-wrapper {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    padding: 3.5rem 1.8rem 2rem;
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .site-brand {
+    margin-bottom: 2.5rem;
   }
 
   .site-name {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: .4rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: .5rem;
+    gap: .4rem;
     direction: rtl;
+    margin-bottom: .2rem;
   }
 
-  .name-ar {
-    font-family: var(--font-heading);
-  }
-
+  .name-ar { font-family: var(--font-heading); }
   .name-en {
     font-family: var(--font-en);
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: var(--accent);
-    letter-spacing: .03em;
     direction: ltr;
   }
 
   .site-tagline {
     font-family: var(--font-ui);
-    font-size: 1.1rem;
+    font-size: .95rem;
     color: var(--text-secondary);
-    font-weight: 500;
-    margin-top: .4rem;
   }
 
-  /* ── Subtle divider below header ── */
-  .header-rule {
+  /* ── Navigation Menu ── */
+  .nav-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+
+  .nav-item button {
+    width: 100%;
+    text-align: right;
+    background: transparent;
     border: none;
-    border-top: 1px solid var(--border);
-    max-width: calc(var(--max-w) + 3rem);
-    margin: 0 auto;
+    padding: .75rem 1rem;
+    font-family: var(--font-ui);
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  /* ── Main content ── */
-  .main-content {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-
-  /* ── Hero ── */
-  .blog-hero {
-    padding: 3rem 0 2rem;
-    text-align: center;
-  }
-
-  .blog-hero h1 {
-    font-family: var(--font-heading);
-    font-size: 2.6rem;
-    font-weight: 700;
-    margin-bottom: .8rem;
-    color: var(--text);
-  }
-
-  .blog-hero .lead {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
+  .nav-item button:hover,
+  .nav-item button.active {
+    background: var(--surface);
     color: var(--accent);
-    line-height: 2;
-    max-width: 600px;
-    margin: 0 auto;
-    font-weight: 500;
+    font-weight: 600;
+    box-shadow: var(--card-shadow);
   }
 
-  /* ── Newsletter CTA ── */
-  .newsletter-cta {
-    text-align: center;
-    padding: 2rem 0 3.5rem;
+  /* ── Main Display Area ── */
+  .main-content {
+    padding: 3.5rem 2.5rem 4rem;
   }
 
-  .newsletter-cta .cta-text {
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+    animation: fadeIn .4s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Page Intro ── */
+  .page-intro {
+    margin-bottom: 2.5rem;
+  }
+
+  .page-intro h1 {
+    font-family: var(--font-heading);
+    font-size: 2.3rem;
+    margin-bottom: .3rem;
+  }
+
+  .page-intro p {
+    font-family: var(--font-heading);
+    color: var(--accent);
+    font-size: 1.25rem;
+    font-style: italic;
+  }
+
+  /* ── Readings Cards ── */
+  .today-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--card-shadow);
+  }
+
+  .today-badge {
+    display: inline-block;
+    font-family: var(--font-en);
+    font-size: 0.85rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .source-meta {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .source-meta a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .quote-box {
     font-family: var(--font-heading);
     font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--text);
+    line-height: 1.9;
+    border-right: 3px solid var(--accent);
+    padding: 1rem 1.2rem;
+    margin: 1.2rem 0;
+    background: rgba(97, 98, 131, 0.03);
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* ── Archive Section ── */
+  .archive-section h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
     margin-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.4rem;
   }
 
-  .newsletter-form {
-    display: flex;
-    gap: .6rem;
-    max-width: 440px;
-    margin: 0 auto;
-    flex-direction: row-reverse;
+  .entry-item {
+    padding: 1.2rem 0;
+    border-bottom: 1px dashed var(--border);
   }
 
-  .newsletter-form input {
-    flex: 1;
-    padding: .8rem 1.1rem;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    font-family: var(--font-ui);
-    font-size: 1rem;
+  .entry-date {
+    font-family: var(--font-en);
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+  }
+
+  .entry-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: .2rem 0;
+  }
+
+  /* ── About Me Page (من أنا) ── */
+  .about-card {
     background: var(--surface);
-    color: var(--text);
-    outline: none;
-    transition: border-color var(--transition);
-    direction: rtl;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 3.5rem 2rem;
+    box-shadow: var(--card-shadow);
+    text-align: center;
   }
 
-  .newsletter-form input:focus {
-    border-color: var(--accent);
+  .philosophy-quote {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--accent);
+    line-height: 2;
+    margin-bottom: 2.5rem;
   }
 
-  .newsletter-form input::placeholder {
-    color: #a399b0;
+  /* Moving Dots in "About Me" */
+  .writing-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+    color: var(--text-secondary);
+    font-size: .95rem;
+    margin-top: 1rem;
   }
 
-  .newsletter-form button {
-    padding: .8rem 1.6rem;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-family: var(--font-ui);
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background var(--transition);
-    white-space: nowrap;
+  .dots-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
   }
 
-  .newsletter-form button:hover {
-    background: var(--accent-hover);
+  .dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    animation: pulse 1.4s infinite ease-in-out both;
+  }
+
+  .dot:nth-child(1) { animation-delay: -0.32s; }
+  .dot:nth-child(2) { animation-delay: -0.16s; }
+
+  @keyframes pulse {
+    0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); }
+    40% { opacity: 1; transform: scale(1.3); }
   }
 
   /* ── Footer ── */
-  .site-footer {
+  .sidebar-footer {
+    font-size: .85rem;
+    color: var(--text-secondary);
     text-align: center;
-    padding: 2.2rem 1.5rem;
+    padding-top: 1.5rem;
     border-top: 1px solid var(--border);
-    max-width: calc(var(--max-w) + 3rem);
-    margin: 0 auto;
-  }
-
-  .footer-name {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .4rem;
-  }
-
-  .footer-en {
-    font-family: var(--font-en);
-    font-weight: 400;
-    font-size: 1.1rem;
-    color: var(--accent);
   }
 
   /* ── Responsive ── */
-  @media (max-width: 480px) {
-    .newsletter-form { flex-direction: column-reverse; }
-    .newsletter-form input,
-    .newsletter-form button { width: 100%; }
-    .site-name { font-size: 2rem; }
-    .name-en { font-size: 1.25rem; }
+  @media (max-width: 768px) {
+    .layout-wrapper {
+      grid-template-columns: 1fr;
+    }
+    .sidebar {
+      border-left: none;
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+    }
+    .main-content {
+      padding: 2rem 1.5rem;
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- ═══ Header ═══ -->
-<header class="site-header">
-  <div class="site-name">
-    <span class="name-ar">شيخة</span><span class="name-en">sheikha</span>
-  </div>
-  <div class="site-tagline">مدوّنة شيخة</div>
-</header>
+<div class="layout-wrapper">
 
-<hr class="header-rule">
+  <!-- ═══ Sidebar ═══ -->
+  <aside class="sidebar">
+    <div>
+      <div class="site-brand">
+        <div class="site-name">
+          <span class="name-ar">شيخة</span><span class="name-en">sheikha</span>
+        </div>
+        <div class="site-tagline">مدوّنة شيخة</div>
+      </div>
 
-<!-- ═══ Main ═══ -->
-<main class="main-content">
-
-  <!-- Hero -->
-  <section class="blog-hero">
-    <h1>المدونة</h1>
-    <p class="lead">في أثرِ الفِكرةِ وامتدادِها</p>
-  </section>
-
-  <!-- Newsletter CTA -->
-  <section class="newsletter-cta">
-    <p class="cta-text">اشترك في نشرتي البريدية</p>
-    <div class="newsletter-form">
-      <input type="email" placeholder="بريدك الإلكتروني">
-      <button>اشتراك</button>
+      <!-- Navigation List -->
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <button class="active" onclick="switchTab('readings', this)">
+              <span>سجل القراءات</span>
+              <span>←</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button onclick="switchTab('about', this)">
+              <span>من أنا؟</span>
+              <span>←</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
     </div>
-  </section>
 
-</main>
+    <footer class="sidebar-footer">
+      <span class="name-ar">شيخة</span> · <span class="name-en">sheikha</span>
+    </footer>
+  </aside>
 
-<!-- ═══ Footer ═══ -->
-<footer class="site-footer">
-  <div class="footer-name">
-    <span class="name-ar">شيخة</span><span class="footer-en">sheikha</span>
-  </div>
-</footer>
+  <!-- ═══ Main Area ═══ -->
+  <main class="main-content">
+
+    <!-- TAB 1: سجل القراءات -->
+    <section id="readings" class="tab-content active">
+      <div class="page-intro">
+        <h1>سجل القراءات</h1>
+        <p>مقالاتٌ نبدأ فيها من حيث انتهى الآخرون</p>
+      </div>
+
+      <!-- قراءة اليوم -->
+      <div class="today-card">
+        <span class="today-badge">أحدث قراءة</span>
+        <div class="source-meta">
+          من مدونة: <a href="http://zhraajaber.blogspot.com/" target="_blank">زهراء جابر</a>
+        </div>
+
+        <div class="quote-box">
+          "إن الأفكار لا تموت حين نكتبها، بل تبدأ حياتها الحقيقية في أذهان الآخرين."
+        </div>
+
+        <p><strong>تأمل:</strong> التدوين ليس مجرد توثيق عابر، بل هو ربطٌ للرؤى وتناقلٌ مستمرٌ للحكمة والفكرة.</p>
+      </div>
+
+      <!-- السجل السابق -->
+      <div class="archive-section">
+        <h2>السجل السابق</h2>
+
+        <div class="entry-item">
+          <span class="entry-date">2026-09-05</span>
+          <div class="entry-title">تأملات في أثر الفكرة</div>
+          <p style="font-size:0.95rem; color:var(--text-secondary);">الانتظام في القراءة والكتابة يخلق المعنى الحقيقي على المدى الطويل.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: من أنا؟ -->
+    <section id="about" class="tab-content">
+      <div class="page-intro">
+        <h1>من أنا؟</h1>
+        <p>مساحة التعبير والتعريف</p>
+      </div>
+
+      <div class="about-card">
+        <div class="philosophy-quote">
+          «أكتبُ لأفهم، وأقرأُ لأبتكر.. فالأفكار العظيمة امتدادٌ لمساحاتٍ من التأمل الواعي.»
+        </div>
+
+        <!-- Animation Center -->
+        <div class="writing-loader">
+          <div class="dots-container">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <span>قيد الكتابة...</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+<script>
+  function switchTab(tabId, btnElement) {
+    document.querySelectorAll('.tab-content').forEach(tab => {
+      tab.classList.remove('active');
+    });
+
+    document.querySelectorAll('.nav-item button').forEach(btn => {
+      btn.classList.remove('active');
+    });
+
+    document.getElementById(tabId).classList.add('active');
+    btnElement.classList.add('active');
+  }
+</script>
 
 </body>
 </html>
