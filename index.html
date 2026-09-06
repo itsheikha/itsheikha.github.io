@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مدوّنة شيخة – sheikha</title>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata:wght@300;400;500;600&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #faf6f1;
@@ -21,7 +21,7 @@
     --font-heading: 'Amiri', serif;
     --font-body: 'Readex Pro', 'Tajawal', sans-serif;
     --font-ui: 'Tajawal', 'Readex Pro', sans-serif;
-    --font-en: 'Fraunces', serif;
+    --font-en: 'Inconsolata', monospace;
     --max-w: 860px;
     --transition: .25s cubic-bezier(.4,0,.2,1);
   }
@@ -54,7 +54,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: .4rem;
+    gap: .5rem;
     direction: rtl;
   }
 
@@ -65,16 +65,15 @@
   .name-en {
     font-family: var(--font-en);
     font-weight: 400;
-    font-style: italic;
-    font-size: 1.5rem; /* تكبير اسم sheikha */
+    font-size: 1.5rem;
     color: var(--accent);
-    letter-spacing: .01em;
+    letter-spacing: .03em;
     direction: ltr;
   }
 
   .site-tagline {
     font-family: var(--font-ui);
-    font-size: 1.1rem; /* تكبير مدوّنة شيخة */
+    font-size: 1.1rem;
     color: var(--text-secondary);
     font-weight: 500;
     margin-top: .4rem;
@@ -203,7 +202,6 @@
   .footer-en {
     font-family: var(--font-en);
     font-weight: 400;
-    font-style: italic;
     font-size: 1.1rem;
     color: var(--accent);
   }
