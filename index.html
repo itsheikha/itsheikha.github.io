@@ -3,144 +3,563 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مدونتي - سجل القراءات</title>
+  <title>سجل القراءات — شيخة</title>
+  <meta name="description" content="سجل قراءاتي الشخصي — ملاحظات، اقتباسات، وخواطر" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
+    /* ── Reset ──────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
     :root {
-      --bg: #f9f9f9;
-      --card-bg: #ffffff;
-      --text: #222222;
-      --muted: #666666;
-      --border: #e5e5e5;
-      --accent: #2563eb;
+      --bg:            #F7F6F3;
+      --surface:       #FFFFFF;
+      --text:          #1E1E1E;
+      --text-mid:      #5C5852;
+      --text-muted:    #9C978F;
+      --border:        #E8E6E1;
+      --accent:        #5B7553;
+      --accent-soft:   #EEF2EC;
+      --done:          #2D6A4F;
+      --done-bg:       #ECFDF5;
+      --progress:      #B45309;
+      --progress-bg:   #FFFBEB;
+      --notstarted:    #9CA3AF;
+      --notstarted-bg: #F3F4F6;
+      --font:          "IBM Plex Sans Arabic", system-ui, sans-serif;
+      --max-w:         820px;
+      --radius:        12px;
+      --shadow:        0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
     }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--bg);
+      font-family: var(--font);
+      background: var(--bg);
       color: var(--text);
-      max-width: 700px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
     }
 
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 24px;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 12px;
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ────────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 246, 243, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
 
-    .post-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 16px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .post-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .post-title {
-      font-size: 1.25rem;
-      margin: 0 0 8px 0;
+    .nav-logo {
+      font-weight: 600;
+      font-size: 1.05rem;
       color: var(--text);
       text-decoration: none;
-      display: block;
-      font-weight: 600;
     }
+    .nav-logo:hover { text-decoration: none; color: var(--accent); }
 
-    .post-title:hover {
-      color: var(--accent);
-    }
-
-    .post-meta {
-      font-size: 0.85rem;
-      color: var(--muted);
+    .nav-links {
       display: flex;
-      gap: 12px;
-      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
     }
 
-    .status-badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      background: #e2e8f0;
-      color: #334155;
+    .nav-links a {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── Container ─────────────────────────────────────────── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
-    #loading {
-      color: var(--muted);
+    /* ── Hero / About ──────────────────────────────────────── */
+    .hero {
+      padding: 4rem 0 3rem;
       text-align: center;
-      padding: 40px 0;
+    }
+
+    .hero-greeting {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.7;
+    }
+
+    .construction-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1.25rem;
+    }
+
+    .construction-dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: dotPulse 1.4s ease-in-out infinite;
+    }
+    .construction-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .construction-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes dotPulse {
+      0%, 80%, 100% { opacity: 0.25; transform: scale(0.75); }
+      40% { opacity: 1; transform: scale(1); }
+    }
+
+    .construction-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.6rem;
+      text-align: center;
+    }
+
+    /* ── شذرات (Micro-posts / Tweets style) ─────────────────── */
+    .micro-section {
+      padding-bottom: 2.5rem;
+    }
+
+    .section-heading {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .micro-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .micro-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .micro-text {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .micro-media {
+      width: 100%;
+      max-height: 380px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .micro-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.5rem;
+      border-top: 1px solid #F3F2EE;
+    }
+
+    .micro-date {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .micro-comments-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Stats ─────────────────────────────────────────────── */
+    .stats-section {
+      padding-bottom: 2.5rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Articles ──────────────────────────────────────────── */
+    .articles-section {
+      padding-bottom: 4rem;
+    }
+
+    .articles-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .article-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .article-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .article-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+    }
+
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .badge-done        { background: var(--done-bg);       color: var(--done); }
+    .badge-done .badge-dot        { background: var(--done); }
+    .badge-progress    { background: var(--progress-bg);   color: var(--progress); }
+    .badge-progress .badge-dot    { background: var(--progress); }
+    .badge-notstarted  { background: var(--notstarted-bg); color: var(--notstarted); }
+    .badge-notstarted .badge-dot  { background: var(--notstarted); }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Loading & States ──────────────────────────────────── */
+    .loading-state, .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-bottom: 0.5rem;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Music Player ──────────────────────────────────────── */
+    .music-btn {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      z-index: 20;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .music-btn svg { width: 18px; height: 18px; color: var(--accent); }
+    .music-btn .icon-pause { display: none; }
+    .music-btn.playing .icon-play  { display: none; }
+    .music-btn.playing .icon-pause { display: block; }
+
+    /* ── Footer ────────────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.78rem;
     }
   </style>
 </head>
+
 <body>
 
-  <h1>سجل القراءات والمقالات</h1>
-  <div id="posts-container">
-    <div id="loading">جاري تحميل المقالات...</div>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">سجل القراءات</a>
+      <ul class="nav-links">
+        <li><a href="#about">عنّي</a></li>
+        <li><a href="#shatharat">شذرات</a></li>
+        <li><a href="#articles">القراءات</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero / About -->
+    <section class="hero" id="about">
+      <p class="hero-greeting">أهلاً، أنا شيخة</p>
+      <h1 class="hero-title">سجل القراءات</h1>
+      <p class="hero-sub">هنا أجمع ما أقرأه — ملاحظاتي، اقتباساتي، وما تبقّى من أثر الكتب.</p>
+      <div class="construction-dots">
+        <span></span><span></span><span></span>
+      </div>
+      <p class="construction-label">المحتوى قيد الإنشاء</p>
+    </section>
+
+    <!-- ══════ شذرات (Micro-posts) ══════ -->
+    <section class="micro-section" id="shatharat">
+      <h2 class="section-heading">شذرات</h2>
+
+      <!-- الحاوية التي ستنزل فيها التغريدات تلقائياً -->
+      <div id="micro-container">
+        <div class="empty-state">لا توجد شذرات جديدة بعد.</div>
+      </div>
+
+      <!-- تعليقات الزوار -->
+      <div class="micro-comments-section">
+        <div id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id="YOUR_CUSDIS_APP_ID"
+          data-page-id="shatharat"
+          data-page-title="شذرات شيخة"
+          data-theme="light"
+        ></div>
+        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number" id="stat-done">—</span>
+          <span class="stat-label">تمّت قراءتها</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="stat-progress">—</span>
+          <span class="stat-label">قيد القراءة</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles -->
+    <section class="articles-section" id="articles">
+      <h2 class="section-heading">القراءات</h2>
+      <div id="articles-container">
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>جارِ تحميل القراءات…</p>
+        </div>
+      </div>
+    </section>
+
   </div>
 
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> شيخة — يُدار بواسطة Notion</p>
+    </div>
+  </footer>
+
+  <!-- Music Player -->
+  <button class="music-btn" id="music-btn" aria-label="تشغيل الموسيقى">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14.72a1 1 0 001.5.86l11-7.36a1 1 0 000-1.72l-11-7.36A1 1 0 008 5.14z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+  </button>
+
   <script>
-    const WORKER_URL = 'https://notion-blog-proxy.officialsheikha7.workers.dev/api/posts';
+    var API_URL = "https://notion-blog-proxy.officialsheikha7.workers.dev/api/posts";
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    async function fetchPosts() {
-      const container = document.getElementById('posts-container');
+    /* Ambient Music Generator */
+    var AmbientPlayer = {
+      ctx: null, playing: false, timers: [],
+      notes: [196.00, 220.00, 261.63, 293.66, 329.63, 392.00, 440.00],
+      start: function () {
+        if (this.playing) return;
+        if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        if (this.ctx.state === "suspended") this.ctx.resume();
+        this.playing = true;
+        this._schedule();
+      },
+      stop: function () { this.playing = false; this.timers.forEach(clearTimeout); this.timers = []; },
+      _schedule: function () {
+        if (!this.playing) return;
+        this._playTone();
+        var self = this;
+        var next = setTimeout(function () { self._schedule(); }, 2000 + Math.random() * 2000);
+        this.timers.push(next);
+      },
+      _playTone: function () {
+        if (!this.playing || !this.ctx) return;
+        var freq = this.notes[Math.floor(Math.random() * this.notes.length)];
+        var osc = this.ctx.createOscillator();
+        var gain = this.ctx.createGain();
+        osc.type = "sine"; osc.frequency.value = freq;
+        var now = this.ctx.currentTime;
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(0.05, now + 0.5);
+        gain.gain.linearRampToValueAtTime(0, now + 3);
+        osc.connect(gain); gain.connect(this.ctx.destination);
+        osc.start(now); osc.stop(now + 3.5);
+      },
+      toggle: function () { if (this.playing) this.stop(); else this.start(); return this.playing; }
+    };
+
+    document.getElementById("music-btn").addEventListener("click", function () {
+      var isPlaying = AmbientPlayer.toggle();
+      this.classList.toggle("playing", isPlaying);
+    });
+
+    /* Fetch & Render Notion Data */
+    async function loadPosts() {
+      var container = document.getElementById("articles-container");
       try {
-        const res = await fetch(WORKER_URL);
-        const data = await res.json();
+        var res = await fetch(API_URL);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        var data = await res.json();
+        var rawPages = data.results || [];
 
-        if (!data.results || data.results.length === 0) {
-          container.innerHTML = '<p>لا توجد مقالات حالياً.</p>';
+        var posts = rawPages.map(function (page) {
+          var props = page.properties || {};
+          return {
+            title: props.Name?.title?.[0]?.plain_text || "بدون عنوان",
+            status: props.Status?.status?.name || "In progress",
+            url: props.URL?.url || page.url || "",
+            date: props.Date?.date?.start || page.created_time || "",
+            quote: props.Quote?.rich_text?.[0]?.plain_text || null
+          };
+        });
+
+        // Stats
+        var done = posts.filter(p => p.status === "Done").length;
+        var progress = posts.filter(p => p.status === "In progress").length;
+        document.getElementById("stat-done").textContent = done;
+        document.getElementById("stat-progress").textContent = progress;
+
+        if (posts.length === 0) {
+          container.innerHTML = '<div class="empty-state">لا توجد قراءات مسجّلة بعد.</div>';
           return;
         }
 
-        container.innerHTML = '';
-
-        data.results.forEach(page => {
-          const props = page.properties;
-          
-          // استخراج العنوان
-          const titleText = props.Name?.title?.[0]?.plain_text || 'بدون عنوان';
-          
-          // استخراج الرابط
-          const postUrl = props.URL?.url || page.url;
-          
-          // استخراج الحالة
-          const status = props.Status?.status?.name || 'غير محدد';
-          
-          // استخراج التاريخ إن وجد
-          const date = props[""]?.date?.start || '';
-
-          const card = document.createElement('div');
-          card.className = 'post-card';
-
-          card.innerHTML = `
-            <a href="${postUrl}" target="_blank" class="post-title">${titleText}</a>
-            <div class="post-meta">
-              <span class="status-badge">${status}</span>
-              ${date ? `<span>• ${date}</span>` : ''}
-            </div>
-          `;
-
-          container.appendChild(card);
-        });
-
+        container.innerHTML = '<div class="articles-list">' + posts.map(buildCard).join("") + '</div>';
       } catch (err) {
-        container.innerHTML = '<p style="color: red;">حدث خطأ أثناء جلب المقالات.</p>';
-        console.error(err);
+        container.innerHTML = '<div class="empty-state">تعذّر تحميل البيانات</div>';
       }
     }
 
-    fetchPosts();
+    function buildCard(post) {
+      var badgeMap = {
+        Done: { cls: "badge-done", label: "تمّت القراءة" },
+        "In progress": { cls: "badge-progress", label: "قيد القراءة" },
+        "Not started": { cls: "badge-notstarted", label: "لم تبدأ" }
+      };
+      var badge = badgeMap[post.status] || badgeMap["Not started"];
+
+      return `
+        <div class="article-card">
+          <div class="article-top">
+            <h3 class="article-title">${post.url ? `<a href="${post.url}" target="_blank">${post.title}</a>` : post.title}</h3>
+            <span class="badge ${badge.cls}"><span class="badge-dot"></span>${badge.label}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    loadPosts();
   </script>
 </body>
 </html>
