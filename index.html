@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مدونتي — شيخة</title>
-
-  <!-- Google Fonts -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مسودتي | My Drafts</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg-color: #faf9f6;
+      --bg-color: #fcfbf9;
       --card-bg: #ffffff;
-      --text-main: #2b2b2b;
-      --text-muted: #6e6e6e;
-      --accent-color: #3b5998;
-      --border-color: #e8e6e1;
-      --chip-bg: #f0eee9;
-      --chip-text: #4a4a4a;
-      --transition-speed: 0.25s;
+      --text-main: #2c2c2c;
+      --text-muted: #666666;
+      --accent-color: #8c7355;
+      --border-color: #eef0f2;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      --radius: 12px;
     }
 
     * {
@@ -30,209 +27,208 @@
     }
 
     body {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-family: 'Tajawal', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-main);
-      line-height: 1.7;
-      padding: 2rem 1rem;
-      max-width: 900px;
+      line-height: 1.8;
+      padding: 20px;
+      max-width: 850px;
       margin: 0 auto;
     }
 
-    /* Header / Nav */
+    /* Header & Navigation */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 1.5rem;
+      padding: 20px 0;
       border-bottom: 1px solid var(--border-color);
-      margin-bottom: 2.5rem;
+      margin-bottom: 30px;
     }
 
-    .site-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text-main);
-      text-decoration: none;
-    }
-
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      margin-right: 1.25rem;
-      font-size: 0.95rem;
-      transition: color var(--transition-speed);
-    }
-
-    nav a:hover {
-      color: var(--text-main);
-    }
-
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      margin-bottom: 3.5rem;
-      padding: 1rem 0;
-    }
-
-    .hero-greeting {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-title {
+    .brand h1 {
+      font-family: 'Amiri', serif;
       font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 0.75rem;
+      color: var(--accent-color);
     }
 
-    .hero-sub {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 1.5rem auto;
-      font-weight: 400;
-    }
-
-    .hero-dots {
-      color: var(--border-color);
-      letter-spacing: 0.25rem;
-      font-size: 1.2rem;
-    }
-
-    /* Tabs / Filter */
-    .section-tabs {
+    .audio-player {
       display: flex;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.5rem;
+      align-items: center;
+      gap: 10px;
+      background: var(--card-bg);
+      padding: 8px 16px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+    }
+
+    .audio-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: opacity 0.2s;
+    }
+
+    .audio-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--border-color);
     }
 
     .tab-btn {
       background: none;
       border: none;
-      font-family: inherit;
-      font-size: 1rem;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      font-family: 'Tajawal', sans-serif;
       font-weight: 500;
       color: var(--text-muted);
       cursor: pointer;
-      padding: 0.5rem 0.75rem;
       position: relative;
-      transition: color var(--transition-speed);
     }
 
     .tab-btn.active {
-      color: var(--text-main);
-      font-weight: 600;
+      color: var(--accent-color);
+      font-weight: 700;
     }
 
     .tab-btn.active::after {
       content: '';
       position: absolute;
-      bottom: -0.5rem;
-      left: 0;
+      bottom: -2px;
       right: 0;
+      width: 100%;
       height: 2px;
-      background-color: var(--text-main);
+      background-color: var(--accent-color);
     }
 
-    /* Grid & Cards */
-    .content-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 4rem;
+    /* Sections */
+    .section-content {
+      display: none;
     }
 
-    .card {
-      background-color: var(--card-bg);
+    .section-content.active {
+      display: block;
+    }
+
+    /* About Section */
+    .about-card {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      margin-bottom: 30px;
     }
 
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    .about-card h2 {
+      font-family: 'Amiri', serif;
+      color: var(--accent-color);
+      margin-bottom: 15px;
+    }
+
+    .about-card ul {
+      list-style-type: '✧ ';
+      padding-right: 20px;
+    }
+
+    .about-card li {
+      margin-bottom: 10px;
+    }
+
+    /* Post / Shard Card */
+    .card {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      margin-bottom: 20px;
     }
 
     .card-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
+      font-family: 'Amiri', serif;
+      font-size: 1.6rem;
+      color: var(--accent-color);
+      margin-bottom: 10px;
     }
 
-    .card-excerpt {
-      font-size: 0.92rem;
+    .card-date {
+      font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
+      margin-bottom: 15px;
     }
 
-    .card-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: auto;
-    }
-
-    .status-chip {
-      background-color: var(--chip-bg);
-      color: var(--chip-text);
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-    }
-
-    /* Shatharat List Style */
-    .shatharat-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .shathara-item {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
+    .card-body img {
+      max-width: 100%;
       border-radius: 8px;
-      padding: 1.25rem 1.5rem;
-      font-size: 1rem;
-      line-height: 1.8;
-      position: relative;
+      margin-top: 12px;
     }
 
-    .shathara-date {
+    /* Manual Shard Form */
+    .form-container {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .form-container h3 {
+      font-family: 'Amiri', serif;
+      color: var(--accent-color);
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
       display: block;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-    }
-
-    /* Loading / Empty States */
-    .state-msg {
-      text-align: center;
-      padding: 3rem 0;
-      color: var(--text-muted);
+      margin-bottom: 5px;
       font-size: 0.95rem;
     }
 
-    /* Footer */
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    .submit-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: bold;
+    }
+
     footer {
       text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-color);
+      padding: 30px 0;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -240,128 +236,174 @@
 
   <!-- Header -->
   <header>
-    <a href="#" class="site-title">شيخة</a>
-    <nav>
-      <a href="#about">عن المدونة</a>
-      <a href="#content">المحتوى</a>
-    </nav>
+    <div class="brand">
+      <h1>مسودتي</h1>
+    </div>
+    <!-- Music Player -->
+    <div class="audio-player">
+      <span>🎼 موسيقى هادئة</span>
+      <button class="audio-btn" id="audioToggle">تشغيل</button>
+      <audio id="bgAudio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3"></audio>
+    </div>
   </header>
 
-  <!-- Hero / About -->
-  <section class="hero" id="about">
-    <p class="hero-greeting">أهلاً، أنا شيخة</p>
-    <h1 class="hero-title">مدونتي..</h1>
-    <p class="hero-sub">هنا أثرُ ما أقرأ، ومسودةٌ لما أفكر فيه.</p>
-    <div class="hero-dots">...</div>
-  </section>
+  <!-- Navigation Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('about')">عنّي</button>
+    <button class="tab-btn" onclick="switchTab('articles')">المقالات</button>
+    <button class="tab-btn" onclick="switchTab('shards')">الشذرات</button>
+    <button class="tab-btn" onclick="switchTab('add-shard')">إضافة شذرة ✦</button>
+  </div>
 
-  <!-- Content Section -->
-  <main id="content">
-    <div class="section-tabs">
-      <button class="tab-btn active" onclick="switchTab('reads')">القراءات والمقالات</button>
-      <button class="tab-btn" onclick="switchTab('shatharat')">الشذرات</button>
+  <!-- About Section -->
+  <div id="about" class="section-content active">
+    <div class="about-card">
+      <h2>مرحباً بك في مسودتي</h2>
+      <p>مساحة شخصية لمشاركة الأفكار، المقالات، والشذرات اليومية.</p>
+      <br>
+      <ul>
+        <li>اهتمامات في الهندسة الحيوية والتصميم والتطوير.</li>
+        <li>تدوينات حول التكنولوجيا، العلوم، والملاحظات الثقافية.</li>
+        <li>شذرات سريعة ونصوص مقتضبة.</li>
+      </ul>
     </div>
+  </div>
 
-    <!-- Reads Grid -->
-    <div id="reads-container" class="content-grid">
-      <div class="state-msg">جاري تحميل القراءات...</div>
+  <!-- Articles Section -->
+  <div id="articles" class="section-content">
+    <div id="articles-list">
+      <!-- Articles will load here -->
+      <div class="card">
+        <h3 class="card-title">عنوان المقال الأول</h3>
+        <div class="card-date">10 سبتمبر 2026</div>
+        <div class="card-body">
+          هذا نص تجريبي للمقال الأول. سيتم تحميل مقالاتكِ تلقائياً هنا بمجرد ربطها بـ Notion أو خادم البيانات.
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Shatharat List -->
-    <div id="shatharat-container" class="shatharat-list" style="display: none;">
-      <div class="state-msg">جاري تحميل الشذرات...</div>
+  <!-- Shards Section -->
+  <div id="shards" class="section-content">
+    <div id="shards-list">
+      <!-- Local & Notion Shards will render here -->
     </div>
-  </main>
+  </div>
 
-  <!-- Footer -->
+  <!-- Add Shard Form Section -->
+  <div id="add-shard" class="section-content">
+    <div class="form-container">
+      <h3>إضافة شذرة جديدة</h3>
+      <form id="shardForm">
+        <div class="form-group">
+          <label for="shardContent">محتوى الشذرة:</label>
+          <textarea id="shardContent" rows="4" required placeholder="اكتبي شذرتك هنا..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="shardImage">رابط صورة (اختياري):</label>
+          <input type="url" id="shardImage" placeholder="https://example.com/image.jpg">
+        </div>
+        <div class="form-group">
+          <label for="secretCode">رمز الحماية / كلمة السر:</label>
+          <input type="password" id="secretCode" required placeholder="أدخلي كلمة السر للإضافة">
+        </div>
+        <button type="submit" class="submit-btn">نشر الشذرة</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Comments Container (Cusdis) -->
+  <div style="margin-top: 40px;">
+    <div id="cusdis_thread"
+      data-host="https://cusdis.com"
+      data-app-id="YOUR_CUSDIS_APP_ID"
+      data-page-id="home"
+      data-page-url="https://yourdomain.com"
+      data-page-title="Home">
+    </div>
+    <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+  </div>
+
   <footer>
-    <p>© جميع الحقوق محفوظة — شيخة</p>
+    <p>© 2026 مسودتي — جميع الحقوق محفوظة</p>
   </footer>
 
-  <!-- Script to Fetch Notion Data -->
   <script>
-    const WORKER_URL = 'https://notion-blog-proxy.intshej.workers.dev'; // مسار الـ Worker الخاص بكِ
+    // Tab Switching Logic
+    function switchTab(tabId) {
+      document.querySelectorAll('.section-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
 
-    let currentTab = 'reads';
+    // Audio Player Toggle
+    const audio = document.getElementById('bgAudio');
+    const audioBtn = document.getElementById('audioToggle');
 
-    function switchTab(tab) {
-      currentTab = tab;
-      const readsContainer = document.getElementById('reads-container');
-      const shatharatContainer = document.getElementById('shatharat-container');
-      const tabs = document.querySelectorAll('.tab-btn');
-
-      tabs.forEach(btn => btn.classList.remove('active'));
-
-      if (tab === 'reads') {
-        tabs[0].classList.add('active');
-        readsContainer.style.display = 'grid';
-        shatharatContainer.style.display = 'none';
+    audioBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        audioBtn.textContent = 'إيقاف مؤقت';
       } else {
-        tabs[1].classList.add('active');
-        readsContainer.style.display = 'none';
-        shatharatContainer.style.display = 'flex';
+        audio.pause();
+        audioBtn.textContent = 'تشغيل';
       }
-    }
+    });
 
-    async function fetchReads() {
-      const container = document.getElementById('reads-container');
-      try {
-        const response = await fetch(`${WORKER_URL}/api/reads`);
-        if (!response.ok) throw new Error('فشل جلب البيانات');
-        const data = await response.json();
+    // Shards Local Storage & Manual Addition
+    const shardForm = document.getElementById('shardForm');
+    const shardsList = document.getElementById('shards-list');
 
-        if (!data || data.length === 0) {
-          container.innerHTML = '<div class="state-msg">لا توجد قراءات مضافة بعد.</div>';
-          return;
-        }
+    function loadShards() {
+      const storedShards = JSON.parse(localStorage.getItem('manual_shards') || '[]');
+      if (storedShards.length === 0) {
+        shardsList.innerHTML = '<p style="color: var(--text-muted);">لا توجد شذرات حالياً.</p>';
+        return;
+      }
 
-        container.innerHTML = data.map(item => `
-          <div class="card">
-            <div>
-              <h3 class="card-title">${item.title || 'بدون عنوان'}</h3>
-              <p class="card-excerpt">${item.excerpt || ''}</p>
-            </div>
-            <div class="card-meta">
-              <span class="status-chip">${item.status || 'تمت القراءة'}</span>
-              <span>${item.date || ''}</span>
-            </div>
+      shardsList.innerHTML = storedShards.map(shard => `
+        <div class="card">
+          <div class="card-date">${shard.date}</div>
+          <div class="card-body">
+            <p>${shard.content}</p>
+            ${shard.image ? `<img src="${shard.image}" alt="صورة الشذرة">` : ''}
           </div>
-        `).join('');
-
-      } catch (err) {
-        container.innerHTML = '<div class="state-msg">حدث خطأ أثناء تحميل القراءات.</div>';
-      }
+        </div>
+      `).join('');
     }
 
-    async function fetchShatharat() {
-      const container = document.getElementById('shatharat-container');
-      try {
-        const response = await fetch(`${WORKER_URL}/api/shatharat`);
-        if (!response.ok) throw new Error('فشل جلب البيانات');
-        const data = await response.json();
+    shardForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const content = document.getElementById('shardContent').value;
+      const image = document.getElementById('shardImage').value;
+      const secret = document.getElementById('secretCode').value;
 
-        if (!data || data.length === 0) {
-          container.innerHTML = '<div class="state-msg">لا توجد شذرات مضافة بعد.</div>';
-          return;
-        }
-
-        container.innerHTML = data.map(item => `
-          <div class="shathara-item">
-            <p>${item.content || ''}</p>
-            <span class="shathara-date">${item.date || ''}</span>
-          </div>
-        `).join('');
-
-      } catch (err) {
-        container.innerHTML = '<div class="state-msg">حدث خطأ أثناء تحميل الشذرات.</div>';
+      // تحقق بسيط من كلمة المرور (يمكنك تغييرها)
+      if (secret !== "1234") { 
+        alert('كلمة السر غير صحيحة!');
+        return;
       }
-    }
+
+      const newShard = {
+        content,
+        image,
+        date: new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' })
+      };
+
+      const storedShards = JSON.parse(localStorage.getItem('manual_shards') || '[]');
+      storedShards.unshift(newShard);
+      localStorage.setItem('manual_shards', JSON.stringify(storedShards));
+
+      alert('تمت إضافة الشذرة بنجاح!');
+      shardForm.reset();
+      loadShards();
+      switchTab('shards');
+    });
 
     // Initial Load
-    document.addEventListener('DOMContentLoaded', () => {
-      fetchReads();
-      fetchShatharat();
-    });
+    loadShards();
   </script>
 </body>
 </html>
