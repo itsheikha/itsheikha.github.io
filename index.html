@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -13,9 +13,8 @@
     --text-secondary: #6e6578;
     --accent: #616283;
     --accent-light: #e8e9f0;
-    --accent-hover: #4b4d66;
     --border: #dacfcd;
-    --card-shadow: 0 2px 8px rgba(70,63,81,0.04);
+    --card-shadow: 0 4px 12px rgba(70,63,81,0.05);
     --radius: 12px;
     --font-heading: 'Amiri', serif;
     --font-body: 'Readex Pro', 'Tajawal', sans-serif;
@@ -32,14 +31,14 @@
     font-size: 18px;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.85;
+    line-height: 1.9;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
   }
 
   a { color: inherit; text-decoration: none; }
 
-  /* ── Layout ── */
+  /* Layout */
   .layout-wrapper {
     max-width: var(--max-w);
     margin: 0 auto;
@@ -51,7 +50,7 @@
     background: var(--bg);
   }
 
-  /* ── Sidebar ── */
+  /* Sidebar */
   .sidebar {
     padding: 3.5rem 1.8rem 2rem;
     border-left: 1px solid var(--border);
@@ -61,9 +60,7 @@
     background: rgba(255, 255, 255, 0.4);
   }
 
-  .site-brand {
-    margin-bottom: 2.5rem;
-  }
+  .site-brand { margin-bottom: 2.5rem; }
 
   .site-name {
     font-size: 2rem;
@@ -91,7 +88,7 @@
     color: var(--text-secondary);
   }
 
-  /* ── Navigation Menu ── */
+  /* Navigation Menu */
   .nav-menu {
     list-style: none;
     display: flex;
@@ -124,51 +121,35 @@
     box-shadow: var(--card-shadow);
   }
 
-  /* ── Main Display Area ── */
-  .main-content {
-    padding: 3.5rem 2.5rem 4rem;
-  }
+  /* Main Area */
+  .main-content { padding: 3.5rem 2.5rem 4rem; }
 
-  .tab-content {
-    display: none;
-  }
-
-  .tab-content.active {
-    display: block;
-    animation: fadeIn .4s ease;
-  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeIn .4s ease; }
 
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── Page Intro ── */
-  .page-intro {
-    margin-bottom: 2.5rem;
-  }
+  /* Page Intro */
+  .page-intro { margin-bottom: 2.5rem; }
+  .page-intro h1 { font-family: var(--font-heading); font-size: 2.3rem; margin-bottom: .3rem; }
 
-  .page-intro h1 {
-    font-family: var(--font-heading);
-    font-size: 2.3rem;
-    margin-bottom: .3rem;
-  }
-
-  .page-intro p {
-    font-family: var(--font-heading);
-    color: var(--accent);
-    font-size: 1.25rem;
-    font-style: italic;
-  }
-
-  /* ── Readings Cards ── */
-  .today-card {
+  /* Article Card */
+  .article-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 2rem;
+    padding: 2.5rem;
     margin-bottom: 3rem;
     box-shadow: var(--card-shadow);
+  }
+
+  .article-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 1.8rem;
   }
 
   .today-badge {
@@ -179,34 +160,56 @@
     color: var(--accent);
     padding: 0.2rem 0.8rem;
     border-radius: 20px;
-    margin-bottom: 1rem;
     font-weight: 600;
+    margin-bottom: .8rem;
   }
 
-  .source-meta {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
+  /* Article Title Link Styling */
+  .article-title-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text);
+    transition: color var(--transition);
   }
 
-  .source-meta a {
+  .article-title-link:hover {
     color: var(--accent);
-    text-decoration: underline;
-    text-underline-offset: 3px;
   }
 
-  .quote-box {
+  .article-title-link:hover .link-icon {
+    transform: translate(-3px, -3px);
+  }
+
+  .article-title {
     font-family: var(--font-heading);
-    font-size: 1.3rem;
-    line-height: 1.9;
-    border-right: 3px solid var(--accent);
-    padding: 1rem 1.2rem;
-    margin: 1.2rem 0;
-    background: rgba(97, 98, 131, 0.03);
-    border-radius: 0 8px 8px 0;
+    font-size: 1.8rem;
   }
 
-  /* ── Archive Section ── */
+  .link-icon {
+    font-size: 1.1rem;
+    color: var(--accent);
+    transition: transform var(--transition);
+    display: inline-block;
+  }
+
+  /* Highlighting Style */
+  mark.hl {
+    background: linear-gradient(100deg, rgba(254, 240, 138, 0.2) 1%, rgba(254, 240, 138, 0.9) 2.5%, rgba(254, 240, 138, 0.95) 98%, rgba(254, 240, 138, 0.2) 99%);
+    color: var(--text);
+    padding: 0.1em 0.3em;
+    border-radius: 2px;
+    display: inline;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .article-text p {
+    margin-bottom: 1.6rem;
+    line-height: 2.1;
+  }
+
+  /* Archive */
   .archive-section h2 {
     font-family: var(--font-heading);
     font-size: 1.6rem;
@@ -215,24 +218,11 @@
     padding-bottom: 0.4rem;
   }
 
-  .entry-item {
-    padding: 1.2rem 0;
-    border-bottom: 1px dashed var(--border);
-  }
+  .entry-item { padding: 1.2rem 0; border-bottom: 1px dashed var(--border); }
+  .entry-date { font-family: var(--font-en); font-size: 0.88rem; color: var(--text-secondary); }
+  .entry-title { font-size: 1.1rem; font-weight: 600; margin: .2rem 0; }
 
-  .entry-date {
-    font-family: var(--font-en);
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-  }
-
-  .entry-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: .2rem 0;
-  }
-
-  /* ── About Me Page (من أنا) ── */
+  /* About Me */
   .about-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -250,7 +240,6 @@
     margin-bottom: 2.5rem;
   }
 
-  /* Moving Dots in "About Me" */
   .writing-loader {
     display: flex;
     flex-direction: column;
@@ -262,12 +251,7 @@
     margin-top: 1rem;
   }
 
-  .dots-container {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    justify-content: center;
-  }
+  .dots-container { display: flex; gap: 8px; align-items: center; justify-content: center; }
 
   .dot {
     width: 8px;
@@ -285,7 +269,6 @@
     40% { opacity: 1; transform: scale(1.3); }
   }
 
-  /* ── Footer ── */
   .sidebar-footer {
     font-size: .85rem;
     color: var(--text-secondary);
@@ -294,19 +277,10 @@
     border-top: 1px solid var(--border);
   }
 
-  /* ── Responsive ── */
   @media (max-width: 768px) {
-    .layout-wrapper {
-      grid-template-columns: 1fr;
-    }
-    .sidebar {
-      border-left: none;
-      border-bottom: 1px solid var(--border);
-      padding: 2rem 1.5rem;
-    }
-    .main-content {
-      padding: 2rem 1.5rem;
-    }
+    .layout-wrapper { grid-template-columns: 1fr; }
+    .sidebar { border-left: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
+    .main-content { padding: 2rem 1.5rem; }
   }
 </style>
 </head>
@@ -314,7 +288,7 @@
 
 <div class="layout-wrapper">
 
-  <!-- ═══ Sidebar ═══ -->
+  <!-- Sidebar -->
   <aside class="sidebar">
     <div>
       <div class="site-brand">
@@ -324,17 +298,16 @@
         <div class="site-tagline">مدوّنة شيخة</div>
       </div>
 
-      <!-- Navigation List -->
       <nav>
         <ul class="nav-menu">
           <li class="nav-item">
-            <button class="active" onclick="switchTab('readings', this)">
+            <button class="active" id="btn-readings">
               <span>سجل القراءات</span>
               <span>←</span>
             </button>
           </li>
           <li class="nav-item">
-            <button onclick="switchTab('about', this)">
+            <button id="btn-about">
               <span>من أنا؟</span>
               <span>←</span>
             </button>
@@ -348,37 +321,52 @@
     </footer>
   </aside>
 
-  <!-- ═══ Main Area ═══ -->
+  <!-- Main Area -->
   <main class="main-content">
 
     <!-- TAB 1: سجل القراءات -->
     <section id="readings" class="tab-content active">
       <div class="page-intro">
         <h1>سجل القراءات</h1>
-        <p>مقالاتٌ نبدأ فيها من حيث انتهى الآخرون</p>
       </div>
 
-      <!-- قراءة اليوم -->
-      <div class="today-card">
-        <span class="today-badge">أحدث قراءة</span>
-        <div class="source-meta">
-          من مدونة: <a href="http://zhraajaber.blogspot.com/" target="_blank">زهراء جابر</a>
+      <div class="article-card">
+        <div class="article-header">
+          <span class="today-badge">أحدث قراءة</span>
+          <h2 class="article-title">
+            <a href="http://zhraajaber.blogspot.com/" target="_blank" rel="noopener noreferrer" class="article-title-link">
+              <span>التفكير التأملي ومستويات الوجود</span>
+              <span class="link-icon">↗</span>
+            </a>
+          </h2>
         </div>
 
-        <div class="quote-box">
-          "إن الأفكار لا تموت حين نكتبها، بل تبدأ حياتها الحقيقية في أذهان الآخرين."
-        </div>
+        <div class="article-text">
+          <p>
+            <mark class="hl">كل شيء في هذا الوجود له أربع مراتب: وجودٌ في الأعيان، ووجودٌ في الأذهان، ووجودٌ في اللسان، ووجودٌ في البياض المكتوب عليه.</mark> — <em>أبو حامد الغزالي</em>
+          </p>
 
-        <p><strong>تأمل:</strong> التدوين ليس مجرد توثيق عابر، بل هو ربطٌ للرؤى وتناقلٌ مستمرٌ للحكمة والفكرة.</p>
+          <p>
+            كل نمو حققته البشرية كان مرهوناً بالنظر إلى الماضي والحاضر بطريقة فعالة تساهم في جعل المستقبل أفضل. و<mark class="hl">التفكير التأملي (Reflective Thinking) هو خطوة لإعادة التوازن بين الذات والواقع</mark>، وتعريض أفكارنا ومشاعرنا للتفنيد والتحييد عن طريق تدوينها في نص، أو مشاركتها في حوار.
+          </p>
+
+          <p>
+            <mark class="hl">يتطلب اكتساب المشاعر الأخلاقية أن يكون الفرد مساهماً نشطاً في نموه، وفي تفسير عالمه، وإصدار الأحكام التي تحديد أفعاله.</mark>
+          </p>
+
+          <p>
+            <mark class="hl">حين نقرأ نصاً يشبهنا، ونتمكن من القبض على ما هو ذاتي خارجنا، يبدو أكثر قابلية للفهم والقبول.. الأمر أشبه بخلق مسافة بين الذات والخبرة، يُمكن للشخص الوقوف عليها، وإعادة النظر إلى خبراته كشيء منفصل بحرية أكبر.</mark>
+          </p>
+        </div>
       </div>
 
-      <!-- السجل السابق -->
       <div class="archive-section">
         <h2>السجل السابق</h2>
-
         <div class="entry-item">
           <span class="entry-date">2026-09-05</span>
-          <div class="entry-title">تأملات في أثر الفكرة</div>
+          <div class="entry-title">
+            <a href="http://zhraajaber.blogspot.com/" target="_blank" rel="noopener noreferrer" style="color:inherit;">تأملات في أثر الفكرة ↗</a>
+          </div>
           <p style="font-size:0.95rem; color:var(--text-secondary);">الانتظام في القراءة والكتابة يخلق المعنى الحقيقي على المدى الطويل.</p>
         </div>
       </div>
@@ -388,7 +376,6 @@
     <section id="about" class="tab-content">
       <div class="page-intro">
         <h1>من أنا؟</h1>
-        <p>مساحة التعبير والتعريف</p>
       </div>
 
       <div class="about-card">
@@ -396,7 +383,6 @@
           «أكتبُ لأفهم، وأقرأُ لأبتكر.. فالأفكار العظيمة امتدادٌ لمساحاتٍ من التأمل الواعي.»
         </div>
 
-        <!-- Animation Center -->
         <div class="writing-loader">
           <div class="dots-container">
             <span class="dot"></span>
@@ -413,18 +399,24 @@
 </div>
 
 <script>
-  function switchTab(tabId, btnElement) {
-    document.querySelectorAll('.tab-content').forEach(tab => {
-      tab.classList.remove('active');
-    });
+  const btnReadings = document.getElementById('btn-readings');
+  const btnAbout = document.getElementById('btn-about');
+  const tabReadings = document.getElementById('readings');
+  const tabAbout = document.getElementById('about');
 
-    document.querySelectorAll('.nav-item button').forEach(btn => {
-      btn.classList.remove('active');
-    });
+  btnReadings.addEventListener('click', function() {
+    tabAbout.classList.remove('active');
+    tabReadings.classList.add('active');
+    btnAbout.classList.remove('active');
+    btnReadings.classList.add('active');
+  });
 
-    document.getElementById(tabId).classList.add('active');
-    btnElement.classList.add('active');
-  }
+  btnAbout.addEventListener('click', function() {
+    tabReadings.classList.remove('active');
+    tabAbout.classList.add('active');
+    btnReadings.classList.remove('active');
+    btnAbout.classList.add('active');
+  });
 </script>
 
 </body>
