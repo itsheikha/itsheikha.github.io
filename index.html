@@ -1,399 +1,146 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مدوّنة شيخة – sheikha</title>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata:wght@300;400;500;600&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #faf6f1;
-    --surface: #ffffff;
-    --text: #463f51;
-    --text-secondary: #6e6578;
-    --accent: #616283;
-    --accent-light: #e8e9f0;
-    --border: #dacfcd;
-    --card-shadow: 0 4px 12px rgba(70,63,81,0.05);
-    --radius: 12px;
-    --font-heading: 'Amiri', serif;
-    --font-body: 'Readex Pro', 'Tajawal', sans-serif;
-    --font-ui: 'Tajawal', 'Readex Pro', sans-serif;
-    --font-en: 'Inconsolata', monospace;
-    --max-w: 1080px;
-    --transition: .25s ease;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مدونتي - سجل القراءات</title>
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --card-bg: #ffffff;
+      --text: #222222;
+      --muted: #666666;
+      --border: #e5e5e5;
+      --accent: #2563eb;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
 
-  body {
-    font-family: var(--font-body);
-    font-size: 18px;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.9;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-  }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+    }
 
-  a { color: inherit; text-decoration: none; }
+    .post-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-  /* Layout */
-  .layout-wrapper {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    min-height: 100vh;
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-    background: var(--bg);
-  }
+    .post-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
 
-  /* Sidebar */
-  .sidebar {
-    padding: 3.5rem 1.8rem 2rem;
-    border-left: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: rgba(255, 255, 255, 0.4);
-  }
+    .post-title {
+      font-size: 1.25rem;
+      margin: 0 0 8px 0;
+      color: var(--text);
+      text-decoration: none;
+      display: block;
+      font-weight: 600;
+    }
 
-  .site-brand { margin-bottom: 2.5rem; }
+    .post-title:hover {
+      color: var(--accent);
+    }
 
-  .site-name {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: .4rem;
-    direction: rtl;
-    margin-bottom: .2rem;
-  }
+    .post-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
 
-  .name-ar { font-family: var(--font-heading); }
-  .name-en {
-    font-family: var(--font-en);
-    font-weight: 400;
-    font-size: 1.25rem;
-    color: var(--accent);
-    direction: ltr;
-  }
+    .status-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      background: #e2e8f0;
+      color: #334155;
+    }
 
-  .site-tagline {
-    font-family: var(--font-ui);
-    font-size: .95rem;
-    color: var(--text-secondary);
-  }
-
-  /* Navigation Menu */
-  .nav-menu {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: .6rem;
-  }
-
-  .nav-item button {
-    width: 100%;
-    text-align: right;
-    background: transparent;
-    border: none;
-    padding: .75rem 1rem;
-    font-family: var(--font-ui);
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-item button:hover,
-  .nav-item button.active {
-    background: var(--surface);
-    color: var(--accent);
-    font-weight: 600;
-    box-shadow: var(--card-shadow);
-  }
-
-  /* Main Area */
-  .main-content { padding: 3.5rem 2.5rem 4rem; }
-
-  .tab-content { display: none; }
-  .tab-content.active { display: block; animation: fadeIn .4s ease; }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Page Intro */
-  .page-intro { margin-bottom: 2.5rem; }
-  .page-intro h1 { font-family: var(--font-heading); font-size: 2.3rem; margin-bottom: .3rem; }
-
-  /* Article Card */
-  .article-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2.5rem;
-    margin-bottom: 3rem;
-    box-shadow: var(--card-shadow);
-  }
-
-  .article-header {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 1rem;
-    margin-bottom: 1.8rem;
-  }
-
-  .today-badge {
-    display: inline-block;
-    font-family: var(--font-en);
-    font-size: 0.85rem;
-    background: var(--accent-light);
-    color: var(--accent);
-    padding: 0.2rem 0.8rem;
-    border-radius: 20px;
-    font-weight: 600;
-    margin-bottom: .8rem;
-  }
-
-  /* Article Title Link Styling */
-  .article-title-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text);
-    transition: color var(--transition);
-  }
-
-  .article-title-link:hover {
-    color: var(--accent);
-  }
-
-  .article-title-link:hover .link-icon {
-    transform: translate(-3px, -3px);
-  }
-
-  .article-title {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-  }
-
-  .link-icon {
-    font-size: 1.1rem;
-    color: var(--accent);
-    transition: transform var(--transition);
-    display: inline-block;
-  }
-
-  /* Highlighting Style */
-  mark.hl {
-    background: linear-gradient(100deg, rgba(254, 240, 138, 0.2) 1%, rgba(254, 240, 138, 0.9) 2.5%, rgba(254, 240, 138, 0.95) 98%, rgba(254, 240, 138, 0.2) 99%);
-    color: var(--text);
-    padding: 0.1em 0.3em;
-    border-radius: 2px;
-    display: inline;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-  }
-
-  .article-text p {
-    margin-bottom: 1.6rem;
-    line-height: 2.1;
-  }
-
-  /* About Me */
-  .about-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 3.5rem 2rem;
-    box-shadow: var(--card-shadow);
-    text-align: center;
-  }
-
-  .philosophy-quote {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: var(--accent);
-    line-height: 2;
-    margin-bottom: 2.5rem;
-  }
-
-  .writing-loader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: .8rem;
-    color: var(--text-secondary);
-    font-size: .95rem;
-    margin-top: 1rem;
-  }
-
-  .dots-container { display: flex; gap: 8px; align-items: center; justify-content: center; }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent);
-    border-radius: 50%;
-    animation: pulse 1.4s infinite ease-in-out both;
-  }
-
-  .dot:nth-child(1) { animation-delay: -0.32s; }
-  .dot:nth-child(2) { animation-delay: -0.16s; }
-
-  @keyframes pulse {
-    0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); }
-    40% { opacity: 1; transform: scale(1.3); }
-  }
-
-  .sidebar-footer {
-    font-size: .85rem;
-    color: var(--text-secondary);
-    text-align: center;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-  }
-
-  @media (max-width: 768px) {
-    .layout-wrapper { grid-template-columns: 1fr; }
-    .sidebar { border-left: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
-    .main-content { padding: 2rem 1.5rem; }
-  }
-</style>
+    #loading {
+      color: var(--muted);
+      text-align: center;
+      padding: 40px 0;
+    }
+  </style>
 </head>
 <body>
 
-<div class="layout-wrapper">
+  <h1>سجل القراءات والمقالات</h1>
+  <div id="posts-container">
+    <div id="loading">جاري تحميل المقالات...</div>
+  </div>
 
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div>
-      <div class="site-brand">
-        <div class="site-name">
-          <span class="name-ar">شيخة</span><span class="name-en">sheikha</span>
-        </div>
-        <div class="site-tagline">مدوّنة شيخة</div>
-      </div>
+  <script>
+    const WORKER_URL = 'https://notion-blog-proxy.officialsheikha7.workers.dev/api/posts';
 
-      <nav>
-        <ul class="nav-menu">
-          <li class="nav-item">
-            <button class="active" id="btn-readings">
-              <span>سجل القراءات</span>
-              <span>←</span>
-            </button>
-          </li>
-          <li class="nav-item">
-            <button id="btn-about">
-              <span>من أنا؟</span>
-              <span>←</span>
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    async function fetchPosts() {
+      const container = document.getElementById('posts-container');
+      try {
+        const res = await fetch(WORKER_URL);
+        const data = await res.json();
 
-    <footer class="sidebar-footer">
-      <span class="name-ar">شيخة</span> · <span class="name-en">sheikha</span>
-    </footer>
-  </aside>
+        if (!data.results || data.results.length === 0) {
+          container.innerHTML = '<p>لا توجد مقالات حالياً.</p>';
+          return;
+        }
 
-  <!-- Main Area -->
-  <main class="main-content">
+        container.innerHTML = '';
 
-    <!-- TAB 1: سجل القراءات -->
-    <section id="readings" class="tab-content active">
-      <div class="page-intro">
-        <h1>سجل القراءات</h1>
-      </div>
+        data.results.forEach(page => {
+          const props = page.properties;
+          
+          // استخراج العنوان
+          const titleText = props.Name?.title?.[0]?.plain_text || 'بدون عنوان';
+          
+          // استخراج الرابط
+          const postUrl = props.URL?.url || page.url;
+          
+          // استخراج الحالة
+          const status = props.Status?.status?.name || 'غير محدد';
+          
+          // استخراج التاريخ إن وجد
+          const date = props[""]?.date?.start || '';
 
-      <div class="article-card">
-        <div class="article-header">
-          <span class="today-badge">أحدث قراءة</span>
-          <h2 class="article-title">
-            <a href="http://zhraajaber.blogspot.com/" target="_blank" rel="noopener noreferrer" class="article-title-link">
-              <span>التفكير التأملي ومستويات الوجود</span>
-              <span class="link-icon">↗</span>
-            </a>
-          </h2>
-        </div>
+          const card = document.createElement('div');
+          card.className = 'post-card';
 
-        <div class="article-text">
-          <p>
-            <mark class="hl">كل شيء في هذا الوجود له أربع مراتب: وجودٌ في الأعيان، ووجودٌ في الأذهان، ووجودٌ في اللسان، ووجودٌ في البياض المكتوب عليه.</mark> — <em>أبو حامد الغزالي</em>
-          </p>
+          card.innerHTML = `
+            <a href="${postUrl}" target="_blank" class="post-title">${titleText}</a>
+            <div class="post-meta">
+              <span class="status-badge">${status}</span>
+              ${date ? `<span>• ${date}</span>` : ''}
+            </div>
+          `;
 
-          <p>
-            كل نمو حققته البشرية كان مرهوناً بالنظر إلى الماضي والحاضر بطريقة فعالة تساهم في جعل المستقبل أفضل. و<mark class="hl">التفكير التأملي (Reflective Thinking) هو خطوة لإعادة التوازن بين الذات والواقع</mark>، وتعريض أفكارنا ومشاعرنا للتفنيد والتحييد عن طريق تدوينها في نص، أو مشاركتها في حوار.
-          </p>
+          container.appendChild(card);
+        });
 
-          <p>
-            <mark class="hl">يتطلب اكتساب المشاعر الأخلاقية أن يكون الفرد مساهماً نشطاً في نموه، وفي تفسير عالمه، وإصدار الأحكام التي تحدد أفعاله.</mark>
-          </p>
+      } catch (err) {
+        container.innerHTML = '<p style="color: red;">حدث خطأ أثناء جلب المقالات.</p>';
+        console.error(err);
+      }
+    }
 
-          <p>
-            <mark class="hl">حين نقرأ نصاً يشبهنا، ونتمكن من القبض على ما هو ذاتي خارجنا، يبدو أكثر قابلية للفهم والقبول.. الأمر أشبه بخلق مسافة بين الذات والخبرة، يُمكن للشخص الوقوف عليها، وإعادة النظر إلى خبراته كشيء منفصل بحرية أكبر.</mark>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 2: من أنا؟ -->
-    <section id="about" class="tab-content">
-      <div class="page-intro">
-        <h1>من أنا؟</h1>
-      </div>
-
-      <div class="about-card">
-        <div class="philosophy-quote">
-          «أكتبُ لأفهم، وأقرأُ لأبتكر.. فالأفكار العظيمة امتدادٌ لمساحاتٍ من التأمل الواعي.»
-        </div>
-
-        <div class="writing-loader">
-          <div class="dots-container">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div>
-          <span>قيد الكتابة...</span>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-</div>
-
-<script>
-  const btnReadings = document.getElementById('btn-readings');
-  const btnAbout = document.getElementById('btn-about');
-  const tabReadings = document.getElementById('readings');
-  const tabAbout = document.getElementById('about');
-
-  btnReadings.addEventListener('click', function() {
-    tabAbout.classList.remove('active');
-    tabReadings.classList.add('active');
-    btnAbout.classList.remove('active');
-    btnReadings.classList.add('active');
-  });
-
-  btnAbout.addEventListener('click', function() {
-    tabReadings.classList.remove('active');
-    tabAbout.classList.add('active');
-    btnReadings.classList.remove('active');
-    btnAbout.classList.add('active');
-  });
-</script>
-
+    fetchPosts();
+  </script>
 </body>
 </html>
