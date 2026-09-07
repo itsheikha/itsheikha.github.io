@@ -5,17 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>مسودتي — شيخة</title>
   <meta name="description" content="مسودتي — شذرات، قراءات، وملاحظات على الهامش" />
- 
-  <!-- ══════════════════════════════════════════════════════════
-       📊 Analytics — فكّي تعليق الخيار اللي يناسبك
-       ══════════════════════════════════════════════════════════ -->
- 
-  <!-- خيار 1: Google Analytics (GA4)
-       1) افتحي analytics.google.com
-       2) أنشئي Property جديد
-       3) انسخي Measurement ID (يبدأ بـ G-)
-       4) استبدلي G-XXXXXXXXXX بالمعرّف حقك
-  -->
+
+  <!-- Analytics (يمكنك فك التعليق عند جاهزية المعرف الخاص بك) -->
   <!--
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
@@ -25,26 +16,14 @@
     gtag('config', 'G-XXXXXXXXXX');
   </script>
   -->
- 
-  <!-- خيار 2: Umami (مفتوح المصدر، يحترم الخصوصية)
-       1) سجّلي في https://cloud.umami.is (مجاني حتى 10K/شهر)
-       2) أضيفي Website واحصلي على الـ Script
-       3) استبدلي الرابط و data-website-id
-  -->
-  <!--
-  <script defer src="https://cloud.umami.is/script.js"
-          data-website-id="YOUR_WEBSITE_ID"></script>
-  -->
- 
-  <!-- ══════════════════════════════════════════════════════════ -->
- 
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
- 
+
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
- 
+
     :root {
       --bg:            #F7F6F3;
       --surface:       #FFFFFF;
@@ -66,9 +45,9 @@
       --radius:        10px;
       --shadow:        0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
     }
- 
+
     html { font-size: 16px; scroll-behavior: smooth; }
- 
+
     body {
       font-family: var(--font);
       background: var(--bg);
@@ -77,11 +56,11 @@
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
     }
- 
+
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
- 
-    /* ── Nav ────────────────────────────────────────────────── */
+
+    /* Nav */
     .nav {
       position: sticky; top: 0; z-index: 10;
       background: rgba(247,246,243,0.85);
@@ -104,10 +83,10 @@
       font-weight: 400; transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--accent); text-decoration: none; }
- 
+
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
- 
-    /* ── Hero / About ──────────────────────────────────────── */
+
+    /* Hero / About */
     .hero { padding: 4rem 0 3rem; text-align: center; }
     .hero-greeting {
       font-size: 0.85rem; font-weight: 400; color: var(--text-muted);
@@ -130,18 +109,17 @@
       0%, 100% { opacity: 0.3; }
       50% { opacity: 1; }
     }
- 
-    /* ── Section heading ───────────────────────────────────── */
+
+    /* Section heading */
     .section-heading {
       font-size: 1.1rem; font-weight: 600; color: var(--text);
       margin-bottom: 1.25rem; padding-bottom: 0.75rem;
       border-bottom: 1px solid var(--border);
     }
- 
-    /* ── شذرات (Thoughts) ──────────────────────────────────── */
+
+    /* شذرات */
     .thoughts-section { padding-bottom: 2.5rem; }
- 
-    /* compose button */
+
     .compose-toggle {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 0.85rem; font-weight: 500; color: var(--accent);
@@ -152,8 +130,7 @@
     }
     .compose-toggle:hover { background: #DDE8DA; }
     .compose-toggle svg { width: 14px; height: 14px; }
- 
-    /* compose form */
+
     .compose-form {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 1.25rem 1.5rem;
@@ -161,7 +138,7 @@
       display: none;
     }
     .compose-form.open { display: block; }
- 
+
     .compose-textarea {
       width: 100%; min-height: 80px; border: 1px solid var(--border);
       border-radius: 8px; padding: 0.85rem 1rem; font-family: var(--font);
@@ -171,12 +148,12 @@
     }
     .compose-textarea:focus { outline: none; border-color: var(--accent); }
     .compose-textarea::placeholder { color: var(--text-muted); }
- 
+
     .compose-footer {
       display: flex; align-items: center; gap: 0.75rem;
       margin-top: 0.85rem; flex-wrap: wrap;
     }
- 
+
     .compose-pass {
       flex: 0 0 auto; width: 150px; padding: 0.5rem 0.75rem;
       border: 1px solid var(--border); border-radius: 8px;
@@ -185,7 +162,7 @@
     }
     .compose-pass:focus { outline: none; border-color: var(--accent); }
     .compose-pass::placeholder { color: var(--text-muted); }
- 
+
     .compose-submit {
       padding: 0.5rem 1.25rem; border: none; border-radius: 8px;
       background: var(--accent); color: #fff; font-family: var(--font);
@@ -194,17 +171,16 @@
     }
     .compose-submit:hover { background: #4A6344; }
     .compose-submit:disabled { opacity: 0.5; cursor: not-allowed; }
- 
+
     .compose-msg {
       font-size: 0.8rem; margin-top: 0.5rem;
       min-height: 1.2em;
     }
     .compose-msg.success { color: var(--done); }
     .compose-msg.error { color: var(--danger); }
- 
-    /* thoughts list */
+
     .thoughts-list { display: flex; flex-direction: column; gap: 1rem; }
- 
+
     .thought-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 1.25rem 1.5rem;
@@ -219,15 +195,15 @@
       font-size: 0.75rem; color: var(--text-muted);
       direction: ltr; display: inline-block;
     }
- 
+
     .thoughts-comments {
       margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
     }
     .comments-label {
       font-size: 0.9rem; font-weight: 500; color: var(--text-mid); margin-bottom: 1rem;
     }
- 
-    /* ── Stats ─────────────────────────────────────────────── */
+
+    /* Stats */
     .stats-section { padding-bottom: 2.5rem; }
     .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .stat-card {
@@ -241,18 +217,18 @@
       color: var(--text); line-height: 1.2; margin-bottom: 0.3rem;
     }
     .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
- 
-    /* ── Articles ──────────────────────────────────────────── */
+
+    /* Articles */
     .articles-section { padding-bottom: 4rem; }
     .articles-list { display: flex; flex-direction: column; gap: 1rem; }
- 
+
     .article-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 1.25rem 1.5rem;
       box-shadow: var(--shadow); transition: border-color 0.25s, box-shadow 0.25s;
     }
     .article-card:hover { border-color: #D1CEC7; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
- 
+
     .article-top {
       display: flex; align-items: flex-start; justify-content: space-between;
       gap: 1rem; margin-bottom: 0.5rem;
@@ -260,7 +236,7 @@
     .article-title { font-size: 1.05rem; font-weight: 500; color: var(--text); line-height: 1.5; flex: 1; }
     .article-title a { color: inherit; text-decoration: none; }
     .article-title a:hover { color: var(--accent); text-decoration: none; }
- 
+
     .badge {
       display: inline-flex; align-items: center; gap: 5px;
       font-size: 0.72rem; font-weight: 500; padding: 0.2rem 0.65rem;
@@ -273,7 +249,7 @@
     .badge-progress .badge-dot    { background: var(--progress); }
     .badge-notstarted  { background: var(--notstarted-bg); color: var(--notstarted); }
     .badge-notstarted .badge-dot  { background: var(--notstarted); }
- 
+
     .article-meta {
       display: flex; align-items: center; gap: 1rem;
       font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap;
@@ -284,15 +260,15 @@
       display: inline-flex; align-items: center; gap: 3px;
     }
     .article-link:hover { text-decoration: underline; }
- 
+
     .article-quote {
       margin-top: 0.85rem; padding: 0.85rem 1.1rem;
       background: var(--accent-soft); border-right: 3px solid var(--accent);
       border-radius: 0 6px 6px 0; font-size: 0.88rem;
       color: var(--text-mid); line-height: 1.7; font-style: italic;
     }
- 
-    /* ── Loading & States ──────────────────────────────────── */
+
+    /* Loading States */
     .loading-state { text-align: center; padding: 3rem 0; color: var(--text-muted); }
     .spinner {
       display: inline-block; width: 24px; height: 24px;
@@ -304,8 +280,8 @@
     .empty-state { text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.92rem; }
     .error-state { text-align: center; padding: 3rem 1rem; color: var(--danger); font-size: 0.92rem; }
     .error-detail { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.5rem; direction: ltr; display: inline-block; }
- 
-    /* ── Music Player ──────────────────────────────────────── */
+
+    /* Music Player */
     .music-btn {
       position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 20;
       width: 44px; height: 44px; border-radius: 50%;
@@ -334,14 +310,14 @@
     .music-bars span:nth-child(2) { height: 10px; animation-delay: 0.2s; }
     .music-bars span:nth-child(3) { height: 4px;  animation-delay: 0.4s; }
     @keyframes barBounce { 0% { transform: scaleY(0.4); } 100% { transform: scaleY(1); } }
- 
-    /* ── Footer ────────────────────────────────────────────── */
+
+    /* Footer */
     .footer {
       border-top: 1px solid var(--border); padding: 1.75rem 0;
       text-align: center; color: var(--text-muted); font-size: 0.78rem;
     }
- 
-    /* ── Responsive ────────────────────────────────────────── */
+
+    /* Responsive */
     @media (max-width: 600px) {
       .hero { padding: 3rem 0 2rem; }
       .hero-title { font-size: 1.35rem; }
@@ -358,10 +334,10 @@
     }
   </style>
 </head>
- 
+
 <body>
- 
-  <!-- ══════ Nav ══════ -->
+
+  <!-- Nav -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">مسودتي</a>
@@ -372,30 +348,28 @@
       </ul>
     </div>
   </nav>
- 
+
   <div class="container">
- 
-    <!-- ══════ Hero / About ══════ -->
+
+    <!-- Hero / About -->
     <section class="hero" id="about">
       <p class="hero-greeting">أهلاً، أنا شيخة</p>
       <h1 class="hero-title">مسودتي</h1>
       <p class="hero-sub">هنا أجمع شذراتي وما أقرأه — ملاحظات، اقتباسات، وما تبقّى من أثر الكتب.</p>
       <div class="hero-dots">...</div>
     </section>
- 
-    <!-- ══════ شذرات ══════ -->
+
+    <!-- شذرات -->
     <section class="thoughts-section" id="thoughts">
       <h2 class="section-heading">شذرات</h2>
- 
-      <!-- زر فتح نموذج الكتابة -->
+
       <button class="compose-toggle" id="compose-toggle" type="button">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <path d="M12 5v14M5 12h14"/>
         </svg>
         أضيفي شذرة
       </button>
- 
-      <!-- نموذج الكتابة -->
+
       <div class="compose-form" id="compose-form">
         <textarea class="compose-textarea" id="compose-text" placeholder="اكتبي شذرتك هنا…" rows="3"></textarea>
         <div class="compose-footer">
@@ -404,22 +378,16 @@
         </div>
         <p class="compose-msg" id="compose-msg"></p>
       </div>
- 
-      <!-- قائمة الشذرات -->
+
       <div id="thoughts-container">
         <div class="loading-state">
           <div class="spinner"></div>
           <p class="loading-text">جارِ تحميل الشذرات…</p>
         </div>
       </div>
- 
-      <!-- تعليقات -->
+
       <div class="thoughts-comments">
         <p class="comments-label">شاركني رأيك</p>
-        <!--
-          💬 Cusdis — استبدلي YOUR_CUSDIS_APP_ID
-          سجّلي في https://cusdis.com → أنشئي Website → انسخي App ID
-        -->
         <div id="cusdis_thread"
           data-host="https://cusdis.com"
           data-app-id="YOUR_CUSDIS_APP_ID"
@@ -431,8 +399,8 @@
         <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
       </div>
     </section>
- 
-    <!-- ══════ Stats ══════ -->
+
+    <!-- Stats -->
     <section class="stats-section">
       <div class="stats-grid">
         <div class="stat-card">
@@ -445,8 +413,8 @@
         </div>
       </div>
     </section>
- 
-    <!-- ══════ Articles ══════ -->
+
+    <!-- Articles -->
     <section class="articles-section" id="articles">
       <h2 class="section-heading">القراءات</h2>
       <div id="articles-container">
@@ -457,37 +425,30 @@
       </div>
     </section>
   </div>
- 
-  <!-- ══════ Footer ══════ -->
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <p>© <span id="year"></span> شيخة — يُدار بواسطة Notion</p>
     </div>
   </footer>
- 
-  <!-- ══════ Music Player ══════ -->
+
+  <!-- Music Player -->
   <button class="music-btn" id="music-btn" aria-label="تشغيل الموسيقى" title="موسيقى هادئة">
     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14.72a1 1 0 001.5.86l11-7.36a1 1 0 000-1.72l-11-7.36A1 1 0 008 5.14z"/></svg>
     <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
     <div class="music-bars"><span></span><span></span><span></span></div>
   </button>
- 
- 
+
   <script>
-    // ══════════════════════════════════════════════════════════
-    //  Config — غيّري WORKER_URL لرابط الـ Worker حقك
-    // ══════════════════════════════════════════════════════════
     var WORKER_URL = "https://notion-blog-proxy.officialsheikha7.workers.dev";
-    // ══════════════════════════════════════════════════════════
- 
+
     document.getElementById("year").textContent = new Date().getFullYear();
- 
+
     var cusdisEl = document.getElementById("cusdis_thread");
     if (cusdisEl) cusdisEl.dataset.pageUrl = window.location.href;
- 
-    // ══════════════════════════════════════════════════════════
-    //  Ambient Music (Web Audio API)
-    // ══════════════════════════════════════════════════════════
+
+    /* Ambient Music */
     var Ambient = {
       ctx: null, playing: false, timers: [],
       notes: [196,220,261.63,293.66,329.63,392,440,523.25,587.33],
@@ -526,10 +487,8 @@
       this.classList.toggle("playing",p);
       this.setAttribute("aria-label",p?"إيقاف الموسيقى":"تشغيل الموسيقى");
     });
- 
-    // ══════════════════════════════════════════════════════════
-    //  Compose Form — كتابة ونشر شذرة إلى Notion
-    // ══════════════════════════════════════════════════════════
+
+    /* Compose Form */
     (function(){
       var toggleBtn  = document.getElementById("compose-toggle");
       var form       = document.getElementById("compose-form");
@@ -537,41 +496,40 @@
       var passInput  = document.getElementById("compose-pass");
       var submitBtn  = document.getElementById("compose-submit");
       var msgEl      = document.getElementById("compose-msg");
- 
+
       toggleBtn.addEventListener("click", function(){
         var open = form.classList.toggle("open");
         if(open) textArea.focus();
       });
- 
+
       submitBtn.addEventListener("click", async function(){
         var text = textArea.value.trim();
         var pass = passInput.value;
- 
+
         if(!text){ showMsg("اكتبي شيئاً أولاً","error"); return; }
         if(!pass){ showMsg("أدخلي كلمة السر","error"); return; }
- 
+
         submitBtn.disabled = true;
         submitBtn.textContent = "جارِ النشر…";
         showMsg("","");
- 
+
         try {
           var res = await fetch(WORKER_URL + "/api/thoughts", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ text: text, password: pass }),
           });
- 
+
           var data = await res.json();
- 
+
           if(!res.ok){
             showMsg(data.message || "حدث خطأ", "error");
             return;
           }
- 
+
           showMsg("تم النشر بنجاح ✓", "success");
           textArea.value = "";
- 
-          // أضيفي الشذرة الجديدة في أعلى القائمة مباشرة
+
           var container = document.getElementById("thoughts-container");
           var list = container.querySelector(".thoughts-list");
           if(!list){
@@ -586,7 +544,7 @@
             '<p class="thought-text">' + escapeHTML(data.thought.text) + '</p>' +
             '<time class="thought-date">' + formatDate(data.thought.date) + '</time>';
           list.insertBefore(card, list.firstChild);
- 
+
         } catch(err) {
           showMsg("خطأ في الاتصال: " + err.message, "error");
         } finally {
@@ -594,21 +552,18 @@
           submitBtn.textContent = "نشر";
         }
       });
- 
-      // Enter في حقل السر = نشر
+
       passInput.addEventListener("keydown", function(e){
         if(e.key === "Enter") submitBtn.click();
       });
- 
+
       function showMsg(txt, type){
         msgEl.textContent = txt;
         msgEl.className = "compose-msg " + (type || "");
       }
     })();
- 
-    // ══════════════════════════════════════════════════════════
-    //  Load Thoughts — جلب الشذرات من Notion
-    // ══════════════════════════════════════════════════════════
+
+    /* Load Thoughts */
     async function loadThoughts(){
       var container = document.getElementById("thoughts-container");
       try {
@@ -616,19 +571,19 @@
         if(!res.ok) throw new Error("HTTP " + res.status);
         var data = await res.json();
         var thoughts = data.thoughts || [];
- 
+
         if(thoughts.length === 0){
           container.innerHTML = '<div class="empty-state">لا توجد شذرات بعد — اكتبي أول واحدة!</div>';
           return;
         }
- 
+
         var html = thoughts.map(function(t){
           return '<div class="thought-card">' +
             '<p class="thought-text">' + escapeHTML(t.text) + '</p>' +
             '<time class="thought-date">' + formatDate(t.date) + '</time>' +
           '</div>';
         }).join("");
- 
+
         container.innerHTML = '<div class="thoughts-list">' + html + '</div>';
       } catch(err){
         console.error("Thoughts error:", err);
@@ -637,10 +592,8 @@
           '<p class="error-detail">' + escapeHTML(err.message) + '</p></div>';
       }
     }
- 
-    // ══════════════════════════════════════════════════════════
-    //  Load Posts — جلب القراءات
-    // ══════════════════════════════════════════════════════════
+
+    /* Load Posts */
     async function loadPosts(){
       var container = document.getElementById("articles-container");
       try {
@@ -648,15 +601,15 @@
         if(!res.ok) throw new Error("HTTP " + res.status);
         var data = await res.json();
         var posts = data.posts || [];
- 
+
         animateNumber("stat-done", posts.filter(function(p){return p.status==="Done";}).length);
         animateNumber("stat-progress", posts.filter(function(p){return p.status==="In progress";}).length);
- 
+
         if(posts.length === 0){
           container.innerHTML = '<div class="empty-state">لا توجد قراءات مسجّلة بعد.</div>';
           return;
         }
- 
+
         container.innerHTML = '<div class="articles-list">' + posts.map(buildCard).join("") + '</div>';
       } catch(err){
         console.error("Posts error:", err);
@@ -665,12 +618,12 @@
           '<p class="error-detail">' + escapeHTML(err.message) + '</p></div>';
       }
     }
- 
+
     function buildCard(post){
       var dateHTML = "";
       var raw = post.date || post.created || "";
       if(raw) dateHTML = '<span class="article-date">' + formatDate(raw) + '</span>';
- 
+
       var bMap = {
         Done:          {cls:"badge-done",      label:"تمّت القراءة"},
         "In progress": {cls:"badge-progress",  label:"قيد القراءة"},
@@ -678,38 +631,36 @@
       };
       var b = bMap[post.status] || bMap["Not started"];
       var badgeHTML = '<span class="badge '+b.cls+'"><span class="badge-dot"></span>'+b.label+'</span>';
- 
+
       var title = escapeHTML(post.title);
       if(post.url) title = '<a href="'+escapeHTML(post.url)+'" target="_blank" rel="noopener">'+title+'</a>';
- 
+
       var linkHTML = "";
       if(post.url) linkHTML = '<a href="'+escapeHTML(post.url)+'" class="article-link" target="_blank" rel="noopener">اقرأ المقال ←</a>';
- 
+
       var quoteHTML = "";
       if(post.quote) quoteHTML = '<div class="article-quote">'+escapeHTML(post.quote)+'</div>';
- 
+
       return '<div class="article-card">' +
         '<div class="article-top"><h3 class="article-title">'+title+'</h3>'+badgeHTML+'</div>' +
         '<div class="article-meta">'+dateHTML+linkHTML+'</div>' +
         quoteHTML +
       '</div>';
     }
- 
-    // ══════════════════════════════════════════════════════════
-    //  Helpers
-    // ══════════════════════════════════════════════════════════
+
+    /* Helpers */
     function escapeHTML(s){
       if(!s) return "";
       var d=document.createElement("div"); d.textContent=s; return d.innerHTML;
     }
- 
+
     function formatDate(raw){
       if(!raw) return "";
       var d = new Date(raw);
       if(isNaN(d)) return "";
       return d.toLocaleDateString("ar-SA",{year:"numeric",month:"short",day:"numeric"});
     }
- 
+
     function animateNumber(id, target){
       var el=document.getElementById(id);
       if(target===0){el.textContent="0";return;}
@@ -719,11 +670,9 @@
         el.textContent=cur;
       },35);
     }
- 
-    // ── Go ────────────────────────────────────────────────
+
     loadThoughts();
     loadPosts();
   </script>
 </body>
 </html>
- 
