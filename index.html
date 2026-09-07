@@ -3,676 +3,365 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مسودتي — شيخة</title>
-  <meta name="description" content="مسودتي — شذرات، قراءات، وملاحظات على الهامش" />
+  <title>مدونتي — شيخة</title>
 
-  <!-- Analytics (يمكنك فك التعليق عند جاهزية المعرف الخاص بك) -->
-  <!--
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-  -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
-      --bg:            #F7F6F3;
-      --surface:       #FFFFFF;
-      --text:          #1E1E1E;
-      --text-mid:      #5C5852;
-      --text-muted:    #9C978F;
-      --border:        #E8E6E1;
-      --accent:        #5B7553;
-      --accent-soft:   #EEF2EC;
-      --done:          #2D6A4F;
-      --done-bg:       #ECFDF5;
-      --progress:      #B45309;
-      --progress-bg:   #FFFBEB;
-      --notstarted:    #9CA3AF;
-      --notstarted-bg: #F3F4F6;
-      --danger:        #B91C1C;
-      --font:          "IBM Plex Sans Arabic", system-ui, sans-serif;
-      --max-w:         820px;
-      --radius:        10px;
-      --shadow:        0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+      --bg-color: #faf9f6;
+      --card-bg: #ffffff;
+      --text-main: #2b2b2b;
+      --text-muted: #6e6e6e;
+      --accent-color: #3b5998;
+      --border-color: #e8e6e1;
+      --chip-bg: #f0eee9;
+      --chip-text: #4a4a4a;
+      --transition-speed: 0.25s;
     }
 
-    html { font-size: 16px; scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    /* Header / Nav */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 2.5rem;
+    }
 
-    /* Nav */
-    .nav {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(247,246,243,0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+    .site-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      text-decoration: none;
     }
-    .nav-inner {
-      max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem;
-      height: 56px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo {
-      font-weight: 600; font-size: 1.05rem; color: var(--text);
-      text-decoration: none; letter-spacing: -0.01em;
-    }
-    .nav-logo:hover { text-decoration: none; color: var(--accent); }
-    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.88rem; color: var(--text-mid); text-decoration: none;
-      font-weight: 400; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); text-decoration: none; }
 
-    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-right: 1.25rem;
+      font-size: 0.95rem;
+      transition: color var(--transition-speed);
+    }
 
-    /* Hero / About */
-    .hero { padding: 4rem 0 3rem; text-align: center; }
+    nav a:hover {
+      color: var(--text-main);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      padding: 1rem 0;
+    }
+
     .hero-greeting {
-      font-size: 0.85rem; font-weight: 400; color: var(--text-muted);
-      margin-bottom: 0.75rem; letter-spacing: 0.02em;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
     }
+
     .hero-title {
-      font-size: 1.6rem; font-weight: 600; color: var(--text);
-      line-height: 1.4; margin-bottom: 0.6rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
     }
+
     .hero-sub {
-      font-size: 0.95rem; color: var(--text-mid);
-      max-width: 480px; margin: 0 auto 1.5rem; line-height: 1.7;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 1.5rem auto;
+      font-weight: 400;
     }
+
     .hero-dots {
-      font-size: 1.5rem; letter-spacing: 0.3em;
-      color: var(--text-muted); margin-top: 0.5rem;
-      animation: dotFade 2s ease-in-out infinite;
-    }
-    @keyframes dotFade {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
+      color: var(--border-color);
+      letter-spacing: 0.25rem;
+      font-size: 1.2rem;
     }
 
-    /* Section heading */
-    .section-heading {
-      font-size: 1.1rem; font-weight: 600; color: var(--text);
-      margin-bottom: 1.25rem; padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--border);
+    /* Tabs / Filter */
+    .section-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
     }
 
-    /* شذرات */
-    .thoughts-section { padding-bottom: 2.5rem; }
-
-    .compose-toggle {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.85rem; font-weight: 500; color: var(--accent);
-      background: var(--accent-soft); border: 1px solid var(--accent);
-      border-radius: 20px; padding: 0.4rem 1rem;
-      cursor: pointer; transition: background 0.2s;
-      margin-bottom: 1.25rem; font-family: var(--font);
-    }
-    .compose-toggle:hover { background: #DDE8DA; }
-    .compose-toggle svg { width: 14px; height: 14px; }
-
-    .compose-form {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.25rem 1.5rem;
-      margin-bottom: 1.5rem; box-shadow: var(--shadow);
-      display: none;
-    }
-    .compose-form.open { display: block; }
-
-    .compose-textarea {
-      width: 100%; min-height: 80px; border: 1px solid var(--border);
-      border-radius: 8px; padding: 0.85rem 1rem; font-family: var(--font);
-      font-size: 0.95rem; line-height: 1.7; color: var(--text);
-      background: var(--bg); resize: vertical;
-      transition: border-color 0.2s;
-    }
-    .compose-textarea:focus { outline: none; border-color: var(--accent); }
-    .compose-textarea::placeholder { color: var(--text-muted); }
-
-    .compose-footer {
-      display: flex; align-items: center; gap: 0.75rem;
-      margin-top: 0.85rem; flex-wrap: wrap;
+    .tab-btn {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.5rem 0.75rem;
+      position: relative;
+      transition: color var(--transition-speed);
     }
 
-    .compose-pass {
-      flex: 0 0 auto; width: 150px; padding: 0.5rem 0.75rem;
-      border: 1px solid var(--border); border-radius: 8px;
-      font-family: var(--font); font-size: 0.82rem; color: var(--text);
-      background: var(--bg);
-    }
-    .compose-pass:focus { outline: none; border-color: var(--accent); }
-    .compose-pass::placeholder { color: var(--text-muted); }
-
-    .compose-submit {
-      padding: 0.5rem 1.25rem; border: none; border-radius: 8px;
-      background: var(--accent); color: #fff; font-family: var(--font);
-      font-size: 0.85rem; font-weight: 500; cursor: pointer;
-      transition: background 0.2s;
-    }
-    .compose-submit:hover { background: #4A6344; }
-    .compose-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    .compose-msg {
-      font-size: 0.8rem; margin-top: 0.5rem;
-      min-height: 1.2em;
-    }
-    .compose-msg.success { color: var(--done); }
-    .compose-msg.error { color: var(--danger); }
-
-    .thoughts-list { display: flex; flex-direction: column; gap: 1rem; }
-
-    .thought-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.25rem 1.5rem;
-      box-shadow: var(--shadow); position: relative;
-    }
-    .thought-card::before {
-      content: "\201C"; position: absolute; top: 0.4rem; left: 1.25rem;
-      font-size: 2.5rem; color: var(--border); font-family: Georgia, serif; line-height: 1;
-    }
-    .thought-text { font-size: 0.95rem; color: var(--text); line-height: 1.8; margin-bottom: 0.5rem; }
-    .thought-date {
-      font-size: 0.75rem; color: var(--text-muted);
-      direction: ltr; display: inline-block;
+    .tab-btn.active {
+      color: var(--text-main);
+      font-weight: 600;
     }
 
-    .thoughts-comments {
-      margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
-    }
-    .comments-label {
-      font-size: 0.9rem; font-weight: 500; color: var(--text-mid); margin-bottom: 1rem;
-    }
-
-    /* Stats */
-    .stats-section { padding-bottom: 2.5rem; }
-    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .stat-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.25rem 1rem;
-      text-align: center; box-shadow: var(--shadow); transition: border-color 0.2s;
-    }
-    .stat-card:hover { border-color: var(--accent); }
-    .stat-number {
-      display: block; font-size: 1.75rem; font-weight: 600;
-      color: var(--text); line-height: 1.2; margin-bottom: 0.3rem;
-    }
-    .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
-
-    /* Articles */
-    .articles-section { padding-bottom: 4rem; }
-    .articles-list { display: flex; flex-direction: column; gap: 1rem; }
-
-    .article-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.25rem 1.5rem;
-      box-shadow: var(--shadow); transition: border-color 0.25s, box-shadow 0.25s;
-    }
-    .article-card:hover { border-color: #D1CEC7; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-
-    .article-top {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      gap: 1rem; margin-bottom: 0.5rem;
-    }
-    .article-title { font-size: 1.05rem; font-weight: 500; color: var(--text); line-height: 1.5; flex: 1; }
-    .article-title a { color: inherit; text-decoration: none; }
-    .article-title a:hover { color: var(--accent); text-decoration: none; }
-
-    .badge {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-size: 0.72rem; font-weight: 500; padding: 0.2rem 0.65rem;
-      border-radius: 20px; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
-    }
-    .badge-dot { width: 6px; height: 6px; border-radius: 50%; }
-    .badge-done        { background: var(--done-bg);       color: var(--done); }
-    .badge-done .badge-dot        { background: var(--done); }
-    .badge-progress    { background: var(--progress-bg);   color: var(--progress); }
-    .badge-progress .badge-dot    { background: var(--progress); }
-    .badge-notstarted  { background: var(--notstarted-bg); color: var(--notstarted); }
-    .badge-notstarted .badge-dot  { background: var(--notstarted); }
-
-    .article-meta {
-      display: flex; align-items: center; gap: 1rem;
-      font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap;
-    }
-    .article-date { direction: ltr; display: inline-block; }
-    .article-link {
-      font-size: 0.8rem; color: var(--accent); text-decoration: none;
-      display: inline-flex; align-items: center; gap: 3px;
-    }
-    .article-link:hover { text-decoration: underline; }
-
-    .article-quote {
-      margin-top: 0.85rem; padding: 0.85rem 1.1rem;
-      background: var(--accent-soft); border-right: 3px solid var(--accent);
-      border-radius: 0 6px 6px 0; font-size: 0.88rem;
-      color: var(--text-mid); line-height: 1.7; font-style: italic;
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--text-main);
     }
 
-    /* Loading States */
-    .loading-state { text-align: center; padding: 3rem 0; color: var(--text-muted); }
-    .spinner {
-      display: inline-block; width: 24px; height: 24px;
-      border: 2.5px solid var(--border); border-top-color: var(--accent);
-      border-radius: 50%; animation: spin 0.7s linear infinite; margin-bottom: 0.5rem;
+    /* Grid & Cards */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loading-text { font-size: 0.88rem; }
-    .empty-state { text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.92rem; }
-    .error-state { text-align: center; padding: 3rem 1rem; color: var(--danger); font-size: 0.92rem; }
-    .error-detail { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.5rem; direction: ltr; display: inline-block; }
 
-    /* Music Player */
-    .music-btn {
-      position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 20;
-      width: 44px; height: 44px; border-radius: 50%;
-      border: 1px solid var(--border); background: var(--surface);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08); cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: transform 0.2s, box-shadow 0.2s;
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
     }
-    .music-btn:hover { transform: scale(1.08); box-shadow: 0 3px 14px rgba(0,0,0,0.12); }
-    .music-btn svg { width: 18px; height: 18px; }
-    .music-btn .icon-play, .music-btn .icon-pause { color: var(--accent); }
-    .music-btn .icon-pause { display: none; }
-    .music-btn.playing .icon-play  { display: none; }
-    .music-btn.playing .icon-pause { display: block; }
-    .music-bars {
-      position: absolute; top: -6px; right: -6px;
-      display: flex; gap: 2px; align-items: flex-end; height: 14px;
-      opacity: 0; transition: opacity 0.3s;
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     }
-    .music-btn.playing .music-bars { opacity: 1; }
-    .music-bars span {
-      width: 2.5px; border-radius: 1px; background: var(--accent);
-      animation: barBounce 0.8s ease-in-out infinite alternate;
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
     }
-    .music-bars span:nth-child(1) { height: 6px;  animation-delay: 0s; }
-    .music-bars span:nth-child(2) { height: 10px; animation-delay: 0.2s; }
-    .music-bars span:nth-child(3) { height: 4px;  animation-delay: 0.4s; }
-    @keyframes barBounce { 0% { transform: scaleY(0.4); } 100% { transform: scaleY(1); } }
+
+    .card-excerpt {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    .status-chip {
+      background-color: var(--chip-bg);
+      color: var(--chip-text);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    /* Shatharat List Style */
+    .shatharat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .shathara-item {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      font-size: 1rem;
+      line-height: 1.8;
+      position: relative;
+    }
+
+    .shathara-date {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+    }
+
+    /* Loading / Empty States */
+    .state-msg {
+      text-align: center;
+      padding: 3rem 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
 
     /* Footer */
-    .footer {
-      border-top: 1px solid var(--border); padding: 1.75rem 0;
-      text-align: center; color: var(--text-muted); font-size: 0.78rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .hero { padding: 3rem 0 2rem; }
-      .hero-title { font-size: 1.35rem; }
-      .stats-grid { gap: 0.6rem; }
-      .stat-card { padding: 1rem 0.5rem; }
-      .stat-number { font-size: 1.4rem; }
-      .stat-label { font-size: 0.72rem; }
-      .article-card, .thought-card { padding: 1rem 1.15rem; }
-      .article-top { flex-direction: column; gap: 0.5rem; }
-      .nav-links { gap: 1rem; }
-      .compose-footer { flex-direction: column; align-items: stretch; }
-      .compose-pass { width: 100%; }
-      .music-btn { bottom: 1rem; left: 1rem; width: 40px; height: 40px; }
+    footer {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.85rem;
     }
   </style>
 </head>
-
 <body>
 
-  <!-- Nav -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">مسودتي</a>
-      <ul class="nav-links">
-        <li><a href="#about">عنّي</a></li>
-        <li><a href="#thoughts">شذرات</a></li>
-        <li><a href="#articles">القراءات</a></li>
-      </ul>
+  <!-- Header -->
+  <header>
+    <a href="#" class="site-title">شيخة</a>
+    <nav>
+      <a href="#about">عن المدونة</a>
+      <a href="#content">المحتوى</a>
+    </nav>
+  </header>
+
+  <!-- Hero / About -->
+  <section class="hero" id="about">
+    <p class="hero-greeting">أهلاً، أنا شيخة</p>
+    <h1 class="hero-title">مدونتي..</h1>
+    <p class="hero-sub">هنا أثرُ ما أقرأ، ومسودةٌ لما أفكر فيه.</p>
+    <div class="hero-dots">...</div>
+  </section>
+
+  <!-- Content Section -->
+  <main id="content">
+    <div class="section-tabs">
+      <button class="tab-btn active" onclick="switchTab('reads')">القراءات والمقالات</button>
+      <button class="tab-btn" onclick="switchTab('shatharat')">الشذرات</button>
     </div>
-  </nav>
 
-  <div class="container">
+    <!-- Reads Grid -->
+    <div id="reads-container" class="content-grid">
+      <div class="state-msg">جاري تحميل القراءات...</div>
+    </div>
 
-    <!-- Hero / About -->
-    <section class="hero" id="about">
-      <p class="hero-greeting">أهلاً، أنا شيخة</p>
-      <h1 class="hero-title">مسودتي</h1>
-      <p class="hero-sub">هنا أجمع شذراتي وما أقرأه — ملاحظات، اقتباسات، وما تبقّى من أثر الكتب.</p>
-      <div class="hero-dots">...</div>
-    </section>
-
-    <!-- شذرات -->
-    <section class="thoughts-section" id="thoughts">
-      <h2 class="section-heading">شذرات</h2>
-
-      <button class="compose-toggle" id="compose-toggle" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <path d="M12 5v14M5 12h14"/>
-        </svg>
-        أضيفي شذرة
-      </button>
-
-      <div class="compose-form" id="compose-form">
-        <textarea class="compose-textarea" id="compose-text" placeholder="اكتبي شذرتك هنا…" rows="3"></textarea>
-        <div class="compose-footer">
-          <input type="password" class="compose-pass" id="compose-pass" placeholder="كلمة السر" autocomplete="off" />
-          <button class="compose-submit" id="compose-submit" type="button">نشر</button>
-        </div>
-        <p class="compose-msg" id="compose-msg"></p>
-      </div>
-
-      <div id="thoughts-container">
-        <div class="loading-state">
-          <div class="spinner"></div>
-          <p class="loading-text">جارِ تحميل الشذرات…</p>
-        </div>
-      </div>
-
-      <div class="thoughts-comments">
-        <p class="comments-label">شاركني رأيك</p>
-        <div id="cusdis_thread"
-          data-host="https://cusdis.com"
-          data-app-id="YOUR_CUSDIS_APP_ID"
-          data-page-id="thoughts"
-          data-page-url=""
-          data-page-title="شذرات — مسودتي"
-          data-theme="light"
-        ></div>
-        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-      </div>
-    </section>
-
-    <!-- Stats -->
-    <section class="stats-section">
-      <div class="stats-grid">
-        <div class="stat-card">
-          <span class="stat-number" id="stat-done">—</span>
-          <span class="stat-label">تمّت قراءتها</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number" id="stat-progress">—</span>
-          <span class="stat-label">قيد القراءة</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Articles -->
-    <section class="articles-section" id="articles">
-      <h2 class="section-heading">القراءات</h2>
-      <div id="articles-container">
-        <div class="loading-state">
-          <div class="spinner"></div>
-          <p class="loading-text">جارِ تحميل القراءات…</p>
-        </div>
-      </div>
-    </section>
-  </div>
+    <!-- Shatharat List -->
+    <div id="shatharat-container" class="shatharat-list" style="display: none;">
+      <div class="state-msg">جاري تحميل الشذرات...</div>
+    </div>
+  </main>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>© <span id="year"></span> شيخة — يُدار بواسطة Notion</p>
-    </div>
+  <footer>
+    <p>© جميع الحقوق محفوظة — شيخة</p>
   </footer>
 
-  <!-- Music Player -->
-  <button class="music-btn" id="music-btn" aria-label="تشغيل الموسيقى" title="موسيقى هادئة">
-    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14.72a1 1 0 001.5.86l11-7.36a1 1 0 000-1.72l-11-7.36A1 1 0 008 5.14z"/></svg>
-    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
-    <div class="music-bars"><span></span><span></span><span></span></div>
-  </button>
-
+  <!-- Script to Fetch Notion Data -->
   <script>
-    var WORKER_URL = "https://notion-blog-proxy.officialsheikha7.workers.dev";
+    const WORKER_URL = 'https://notion-blog-proxy.intshej.workers.dev'; // مسار الـ Worker الخاص بكِ
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+    let currentTab = 'reads';
 
-    var cusdisEl = document.getElementById("cusdis_thread");
-    if (cusdisEl) cusdisEl.dataset.pageUrl = window.location.href;
+    function switchTab(tab) {
+      currentTab = tab;
+      const readsContainer = document.getElementById('reads-container');
+      const shatharatContainer = document.getElementById('shatharat-container');
+      const tabs = document.querySelectorAll('.tab-btn');
 
-    /* Ambient Music */
-    var Ambient = {
-      ctx: null, playing: false, timers: [],
-      notes: [196,220,261.63,293.66,329.63,392,440,523.25,587.33],
-      start: function(){
-        if(this.playing) return;
-        if(!this.ctx) this.ctx = new (window.AudioContext||window.webkitAudioContext)();
-        if(this.ctx.state==="suspended") this.ctx.resume();
-        this.playing = true; this._loop();
-      },
-      stop: function(){
-        this.playing = false;
-        this.timers.forEach(clearTimeout); this.timers = [];
-      },
-      _loop: function(){
-        if(!this.playing) return;
-        this._tone();
-        if(Math.random()>0.55){var s=this;var t=setTimeout(function(){s._tone(0.035);},250+Math.random()*400);this.timers.push(t);}
-        var s=this;var n=setTimeout(function(){s._loop();},2000+Math.random()*2000);this.timers.push(n);
-      },
-      _tone: function(vol){
-        if(!this.playing||!this.ctx) return;
-        var f=this.notes[Math.floor(Math.random()*this.notes.length)];
-        var o=this.ctx.createOscillator(),g=this.ctx.createGain();
-        o.type="sine"; o.frequency.value=f;
-        var now=this.ctx.currentTime, v=vol||0.055, dur=3+Math.random()*2;
-        g.gain.setValueAtTime(0,now);
-        g.gain.linearRampToValueAtTime(v,now+0.6);
-        g.gain.linearRampToValueAtTime(0,now+dur);
-        o.connect(g); g.connect(this.ctx.destination);
-        o.start(now); o.stop(now+dur+0.5);
-      },
-      toggle: function(){ if(this.playing) this.stop(); else this.start(); return this.playing; }
-    };
-    document.getElementById("music-btn").addEventListener("click",function(){
-      var p=Ambient.toggle();
-      this.classList.toggle("playing",p);
-      this.setAttribute("aria-label",p?"إيقاف الموسيقى":"تشغيل الموسيقى");
+      tabs.forEach(btn => btn.classList.remove('active'));
+
+      if (tab === 'reads') {
+        tabs[0].classList.add('active');
+        readsContainer.style.display = 'grid';
+        shatharatContainer.style.display = 'none';
+      } else {
+        tabs[1].classList.add('active');
+        readsContainer.style.display = 'none';
+        shatharatContainer.style.display = 'flex';
+      }
+    }
+
+    async function fetchReads() {
+      const container = document.getElementById('reads-container');
+      try {
+        const response = await fetch(`${WORKER_URL}/api/reads`);
+        if (!response.ok) throw new Error('فشل جلب البيانات');
+        const data = await response.json();
+
+        if (!data || data.length === 0) {
+          container.innerHTML = '<div class="state-msg">لا توجد قراءات مضافة بعد.</div>';
+          return;
+        }
+
+        container.innerHTML = data.map(item => `
+          <div class="card">
+            <div>
+              <h3 class="card-title">${item.title || 'بدون عنوان'}</h3>
+              <p class="card-excerpt">${item.excerpt || ''}</p>
+            </div>
+            <div class="card-meta">
+              <span class="status-chip">${item.status || 'تمت القراءة'}</span>
+              <span>${item.date || ''}</span>
+            </div>
+          </div>
+        `).join('');
+
+      } catch (err) {
+        container.innerHTML = '<div class="state-msg">حدث خطأ أثناء تحميل القراءات.</div>';
+      }
+    }
+
+    async function fetchShatharat() {
+      const container = document.getElementById('shatharat-container');
+      try {
+        const response = await fetch(`${WORKER_URL}/api/shatharat`);
+        if (!response.ok) throw new Error('فشل جلب البيانات');
+        const data = await response.json();
+
+        if (!data || data.length === 0) {
+          container.innerHTML = '<div class="state-msg">لا توجد شذرات مضافة بعد.</div>';
+          return;
+        }
+
+        container.innerHTML = data.map(item => `
+          <div class="shathara-item">
+            <p>${item.content || ''}</p>
+            <span class="shathara-date">${item.date || ''}</span>
+          </div>
+        `).join('');
+
+      } catch (err) {
+        container.innerHTML = '<div class="state-msg">حدث خطأ أثناء تحميل الشذرات.</div>';
+      }
+    }
+
+    // Initial Load
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchReads();
+      fetchShatharat();
     });
-
-    /* Compose Form */
-    (function(){
-      var toggleBtn  = document.getElementById("compose-toggle");
-      var form       = document.getElementById("compose-form");
-      var textArea   = document.getElementById("compose-text");
-      var passInput  = document.getElementById("compose-pass");
-      var submitBtn  = document.getElementById("compose-submit");
-      var msgEl      = document.getElementById("compose-msg");
-
-      toggleBtn.addEventListener("click", function(){
-        var open = form.classList.toggle("open");
-        if(open) textArea.focus();
-      });
-
-      submitBtn.addEventListener("click", async function(){
-        var text = textArea.value.trim();
-        var pass = passInput.value;
-
-        if(!text){ showMsg("اكتبي شيئاً أولاً","error"); return; }
-        if(!pass){ showMsg("أدخلي كلمة السر","error"); return; }
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = "جارِ النشر…";
-        showMsg("","");
-
-        try {
-          var res = await fetch(WORKER_URL + "/api/thoughts", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ text: text, password: pass }),
-          });
-
-          var data = await res.json();
-
-          if(!res.ok){
-            showMsg(data.message || "حدث خطأ", "error");
-            return;
-          }
-
-          showMsg("تم النشر بنجاح ✓", "success");
-          textArea.value = "";
-
-          var container = document.getElementById("thoughts-container");
-          var list = container.querySelector(".thoughts-list");
-          if(!list){
-            list = document.createElement("div");
-            list.className = "thoughts-list";
-            container.innerHTML = "";
-            container.appendChild(list);
-          }
-          var card = document.createElement("div");
-          card.className = "thought-card";
-          card.innerHTML =
-            '<p class="thought-text">' + escapeHTML(data.thought.text) + '</p>' +
-            '<time class="thought-date">' + formatDate(data.thought.date) + '</time>';
-          list.insertBefore(card, list.firstChild);
-
-        } catch(err) {
-          showMsg("خطأ في الاتصال: " + err.message, "error");
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "نشر";
-        }
-      });
-
-      passInput.addEventListener("keydown", function(e){
-        if(e.key === "Enter") submitBtn.click();
-      });
-
-      function showMsg(txt, type){
-        msgEl.textContent = txt;
-        msgEl.className = "compose-msg " + (type || "");
-      }
-    })();
-
-    /* Load Thoughts */
-    async function loadThoughts(){
-      var container = document.getElementById("thoughts-container");
-      try {
-        var res = await fetch(WORKER_URL + "/api/thoughts");
-        if(!res.ok) throw new Error("HTTP " + res.status);
-        var data = await res.json();
-        var thoughts = data.thoughts || [];
-
-        if(thoughts.length === 0){
-          container.innerHTML = '<div class="empty-state">لا توجد شذرات بعد — اكتبي أول واحدة!</div>';
-          return;
-        }
-
-        var html = thoughts.map(function(t){
-          return '<div class="thought-card">' +
-            '<p class="thought-text">' + escapeHTML(t.text) + '</p>' +
-            '<time class="thought-date">' + formatDate(t.date) + '</time>' +
-          '</div>';
-        }).join("");
-
-        container.innerHTML = '<div class="thoughts-list">' + html + '</div>';
-      } catch(err){
-        console.error("Thoughts error:", err);
-        container.innerHTML =
-          '<div class="error-state"><p>تعذّر تحميل الشذرات</p>' +
-          '<p class="error-detail">' + escapeHTML(err.message) + '</p></div>';
-      }
-    }
-
-    /* Load Posts */
-    async function loadPosts(){
-      var container = document.getElementById("articles-container");
-      try {
-        var res = await fetch(WORKER_URL + "/api/posts");
-        if(!res.ok) throw new Error("HTTP " + res.status);
-        var data = await res.json();
-        var posts = data.posts || [];
-
-        animateNumber("stat-done", posts.filter(function(p){return p.status==="Done";}).length);
-        animateNumber("stat-progress", posts.filter(function(p){return p.status==="In progress";}).length);
-
-        if(posts.length === 0){
-          container.innerHTML = '<div class="empty-state">لا توجد قراءات مسجّلة بعد.</div>';
-          return;
-        }
-
-        container.innerHTML = '<div class="articles-list">' + posts.map(buildCard).join("") + '</div>';
-      } catch(err){
-        console.error("Posts error:", err);
-        container.innerHTML =
-          '<div class="error-state"><p>تعذّر تحميل القراءات</p>' +
-          '<p class="error-detail">' + escapeHTML(err.message) + '</p></div>';
-      }
-    }
-
-    function buildCard(post){
-      var dateHTML = "";
-      var raw = post.date || post.created || "";
-      if(raw) dateHTML = '<span class="article-date">' + formatDate(raw) + '</span>';
-
-      var bMap = {
-        Done:          {cls:"badge-done",      label:"تمّت القراءة"},
-        "In progress": {cls:"badge-progress",  label:"قيد القراءة"},
-        "Not started": {cls:"badge-notstarted",label:"لم تبدأ"},
-      };
-      var b = bMap[post.status] || bMap["Not started"];
-      var badgeHTML = '<span class="badge '+b.cls+'"><span class="badge-dot"></span>'+b.label+'</span>';
-
-      var title = escapeHTML(post.title);
-      if(post.url) title = '<a href="'+escapeHTML(post.url)+'" target="_blank" rel="noopener">'+title+'</a>';
-
-      var linkHTML = "";
-      if(post.url) linkHTML = '<a href="'+escapeHTML(post.url)+'" class="article-link" target="_blank" rel="noopener">اقرأ المقال ←</a>';
-
-      var quoteHTML = "";
-      if(post.quote) quoteHTML = '<div class="article-quote">'+escapeHTML(post.quote)+'</div>';
-
-      return '<div class="article-card">' +
-        '<div class="article-top"><h3 class="article-title">'+title+'</h3>'+badgeHTML+'</div>' +
-        '<div class="article-meta">'+dateHTML+linkHTML+'</div>' +
-        quoteHTML +
-      '</div>';
-    }
-
-    /* Helpers */
-    function escapeHTML(s){
-      if(!s) return "";
-      var d=document.createElement("div"); d.textContent=s; return d.innerHTML;
-    }
-
-    function formatDate(raw){
-      if(!raw) return "";
-      var d = new Date(raw);
-      if(isNaN(d)) return "";
-      return d.toLocaleDateString("ar-SA",{year:"numeric",month:"short",day:"numeric"});
-    }
-
-    function animateNumber(id, target){
-      var el=document.getElementById(id);
-      if(target===0){el.textContent="0";return;}
-      var cur=0, step=Math.max(1,Math.floor(target/20));
-      var iv=setInterval(function(){
-        cur+=step; if(cur>=target){cur=target;clearInterval(iv);}
-        el.textContent=cur;
-      },35);
-    }
-
-    loadThoughts();
-    loadPosts();
   </script>
 </body>
 </html>
